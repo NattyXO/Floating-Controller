@@ -35,7 +35,7 @@ namespace Floating_Controller
         public static extern bool ReleaseCapture();
 
      
-        private void picExpandClose_Click(object sender, EventArgs e)
+        public void picExpandClose_Click(object sender, EventArgs e)
         {
             picExpand.Visible = true;
             picExpandClose.Visible = false;

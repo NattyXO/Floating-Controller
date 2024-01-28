@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,27 +20,40 @@ namespace Floating_Controller
         {
             InitializeComponent();
         }
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
 
-        private void bunifuGradientPanel1_Click(object sender, EventArgs e)
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+        public void ToastShow(string type, string message)
         {
-
+            TaostNotification toast = new TaostNotification(type, message);
+            toast.Show();
         }
 
         private void picScreenShot_Click(object sender, EventArgs e)
         {
+            // Call picExpandClose_Click with appropriate parameters
             Program.MainForm.picExpandClose_Click(sender, e);
 
             // Minimize Form1
             Program.MainForm.WindowState = FormWindowState.Minimized;
+
             // Capture the entire screen
             Bitmap screenshot = CaptureScreen();
 
             // Save the screenshot to the Pictures folder
             SaveScreenshot(screenshot);
-            // Minimize Form1
-            Program.MainForm.WindowState = FormWindowState.Normal;
-        }
+            ToastShow("SUCCESS", "Save Successful.");
 
+            // Restore Form1 to normal state
+            Program.MainForm.WindowState = FormWindowState.Normal;
+            Program.MainForm.picExpand_Click(sender, e);
+
+        }
         private Bitmap CaptureScreen()
         {
             // Create a bitmap to store the screenshot
@@ -75,7 +90,22 @@ namespace Floating_Controller
             screenshot.Save(filePath, System.Drawing.Imaging.ImageFormat.Png);
 
             // Optionally, you can display a message to the user or open the folder containing the screenshot
-            MessageBox.Show($"Screenshot saved to {filePath}", "Screenshot Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ToastShow("SUCCESS", "Save Successful.");
+        }
+
+        private void Menu_KeyDown(object sender, KeyEventArgs e)
+        {
+           
+            
+        }
+
+        private void bunifuGradientPanel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
         }
     }
 }

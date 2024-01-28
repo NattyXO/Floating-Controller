@@ -65,7 +65,6 @@ C:\Users\NattyXO\source\repos\Floating Controller\bin\Debug\Bunifu.UI.WinForms.B
 C:\Users\NattyXO\source\repos\Floating Controller\bin\Debug\Bunifu.UI.WinForms.BunifuToolTip.xml
 C:\Users\NattyXO\source\repos\Floating Controller\bin\Debug\Bunifu.UI.WinForms.BunifuTransition.xml
 C:\Users\NattyXO\source\repos\Floating Controller\bin\Debug\Bunifu.UI.WinForms.BunifuUserControl.xml
-C:\Users\NattyXO\source\repos\Floating Controller\obj\Debug\Floating Controller.csproj.AssemblyReference.cache
 C:\Users\NattyXO\source\repos\Floating Controller\obj\Debug\Floating_Controller.frmFloat.resources
 C:\Users\NattyXO\source\repos\Floating Controller\obj\Debug\Floating_Controller.Properties.Resources.resources
 C:\Users\NattyXO\source\repos\Floating Controller\obj\Debug\Floating Controller.csproj.GenerateResource.cache
@@ -75,3 +74,5 @@ C:\Users\NattyXO\source\repos\Floating Controller\obj\Debug\Floating Controller.
 C:\Users\NattyXO\source\repos\Floating Controller\obj\Debug\Floating Controller.exe
 C:\Users\NattyXO\source\repos\Floating Controller\obj\Debug\Floating Controller.pdb
 C:\Users\NattyXO\source\repos\Floating Controller\obj\Debug\Floating_Controller.Menu.resources
+C:\Users\NattyXO\source\repos\Floating Controller\obj\Debug\Floating Controller.csproj.AssemblyReference.cache
+C:\Users\NattyXO\source\repos\Floating Controller\obj\Debug\Floating_Controller.TaostNotification.resources

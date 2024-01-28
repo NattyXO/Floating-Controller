@@ -46,7 +46,7 @@ namespace Floating_Controller
             }
         }
 
-        private void picExpand_Click(object sender, EventArgs e)
+        public void picExpand_Click(object sender, EventArgs e)
         {
             picExpand.Visible = false;
             picExpandClose.Visible = true;

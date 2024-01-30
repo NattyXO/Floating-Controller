@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Floating_Controller
@@ -42,7 +36,7 @@ namespace Floating_Controller
         private void TaostNotification_Load(object sender, EventArgs e)
         {
             Position();
-            
+
             toastHide.Start();
             //toastTimer.Start();
         }

@@ -1,19 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
+using System.Configuration;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Floating_Controller
 {
-    
+
     public partial class Menu : Form
     {
         public enum Orientations
@@ -29,6 +23,10 @@ namespace Floating_Controller
             picRotate.Visible = false;
             picRotate180.Visible = false;
             picRotate270.Visible = false;
+            picAlwaysOnOFF.Visible = false;
+            timer1.Interval = 15000; // Set the interval to 15 seconds (adjust as needed)
+            timer1.Tick += PicAlwaysOnTimer_Tick;
+            timer1.Start();
         }
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -37,6 +35,8 @@ namespace Floating_Controller
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         [DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
+
+        
 
         public void ToastShow(string type, string message)
         {
@@ -105,8 +105,8 @@ namespace Floating_Controller
 
         private void Menu_KeyDown(object sender, KeyEventArgs e)
         {
-           
-            
+
+
         }
 
         private void bunifuGradientPanel1_MouseDown(object sender, MouseEventArgs e)
@@ -427,6 +427,187 @@ namespace Floating_Controller
             ResetAllRotations();
         }
 
-       
+        public void SetPowerMode(string[] args)
+        {
+            try
+            {
+                ReadConfig();
+
+                if (args.Length == 0)
+                {
+                    uint result = PowerGetEffectiveOverlayScheme(out Guid currentMode);
+                    if (result == 0)
+                    {
+                        Console.WriteLine(currentMode);
+                        if (currentMode == PowerMode.BetterBattery)
+                        {
+                            Console.WriteLine("Better battery");
+                        }
+                        else if (currentMode == PowerMode.BetterPerformance)
+                        {
+                            Console.WriteLine("Better performance");
+                        }
+                        else if (currentMode == PowerMode.BestPerformance)
+                        {
+                            Console.WriteLine("Best performance");
+                        }
+                    }
+                    else
+                    {
+                        // Handle the result or throw an exception if needed.
+                        Console.Error.WriteLine($"Failed to get power mode. Result: {result}\n");
+                        return;
+                    }
+                }
+                else if (args.Length == 1)
+                {
+                    string parameter = args[0].ToLower();
+                    Guid powerMode;
+
+                    if (parameter == "/?" || parameter == "-?")
+                    {
+                        Usage();
+                        // Implement exit code or actions here.
+                        return;
+                    }
+                    else if (parameter == "BetterBattery".ToLower())
+                    {
+                        powerMode = PowerMode.BetterBattery;
+                    }
+                    else if (parameter == "BetterPerformance".ToLower())
+                    {
+                        powerMode = PowerMode.BetterPerformance;
+                    }
+                    else if (parameter == "BestPerformance".ToLower())
+                    {
+                        powerMode = PowerMode.BestPerformance;
+                    }
+                    else
+                    {
+                        try
+                        {
+                            powerMode = new Guid(parameter);
+                        }
+                        catch (Exception)
+                        {
+                            Console.Error.WriteLine("Failed to parse GUID.\n");
+                            Usage();
+                            // Implement exit code or actions here.
+                            return;
+                        }
+                    }
+                    uint result = PowerSetActiveOverlayScheme(powerMode);
+
+                    if (result == 0)
+                    {
+                        Console.WriteLine("Set power mode to {0}.", powerMode);
+                    }
+                    else
+                    {
+                        Console.Error.WriteLine("Failed to set power mode.\n");
+                        Usage();
+                        // Implement exit code or actions here.
+                        return;
+                    }
+                }
+                else
+                {
+                    Usage();
+                    // Implement exit code or actions here.
+                    return;
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.Error.WriteLine("{0}: {1}\n{2}", exception.GetType(), exception.Message, exception.StackTrace);
+                Console.WriteLine();
+                Usage();
+                // Implement exit code or actions here.
+                return;
+            }
+
+            // Implement exit code or actions here for successful execution.
+            Console.WriteLine("Power mode setting completed successfully.");
+        }
+
+
+        private static void Usage()
+        {
+            Console.WriteLine(
+                "PowerMode (GPLv3); used to set the active power mode on Windows 10, version 1709 or later\n" +
+                "https://github.com/AaronKelley/PowerMode\n" +
+                "\n" +
+                "  PowerMode                    Report the current power mode\n" +
+                "  PowerMode BetterBattery      Set the system to \"better battery\" mode\n" +
+                "  PowerMode BetterPerformance  Set the system to \"better performance\" mode\n" +
+                "  PowerMode BestPerformance    Set the system to \"best performance\" mode\n" +
+                "  PowerMode <GUID>             Set the system to the mode identified by the GUID"
+            );
+        }
+
+        private static void ReadConfig()
+        {
+            if (ConfigurationManager.AppSettings["BetterBatteryGuid"] != null)
+            {
+                PowerMode.BetterBattery = new Guid(ConfigurationManager.AppSettings["BetterBatteryGuid"]);
+            }
+            if (ConfigurationManager.AppSettings["BetterPerformanceGuid"] != null)
+            {
+                PowerMode.BetterPerformance = new Guid(ConfigurationManager.AppSettings["BetterPerformanceGuid"]);
+            }
+            if (ConfigurationManager.AppSettings["BestPerformanceGuid"] != null)
+            {
+                PowerMode.BestPerformance = new Guid(ConfigurationManager.AppSettings["BestPerformanceGuid"]);
+            }
+        }
+
+        private static class PowerMode
+        {
+            public static Guid BetterBattery = new Guid("961cc777-2547-4f9d-8174-7d86181b8a7a");
+            public static Guid BetterPerformance = new Guid("3af9B8d9-7c97-431d-ad78-34a8bfea439f");
+            public static Guid BestPerformance = new Guid("ded574b5-45a0-4f42-8737-46345c09c238");
+        }
+
+        [DllImportAttribute("powrprof.dll", EntryPoint = "PowerGetEffectiveOverlayScheme")]
+        private static extern uint PowerGetEffectiveOverlayScheme(out Guid EffectiveOverlayPolicyGuid);
+
+        [DllImportAttribute("powrprof.dll", EntryPoint = "PowerSetActiveOverlayScheme")]
+        private static extern uint PowerSetActiveOverlayScheme(Guid OverlaySchemeGuid);
+
+        private void picEnergySaver_Click(object sender, EventArgs e)
+        {
+            PowerSetActiveOverlayScheme(PowerMode.BetterBattery);
+
+
+            // Inform the user about the mode change.
+            ToastShow("Energy Saver", "Power mode set to Better Battery.");
+
+        }
+
+        private void picAlwaysOn_Click(object sender, EventArgs e)
+        {
+            picAlwaysOn.Visible = false;
+            picAlwaysOnOFF.Visible = true;
+        }
+
+        private void picAlwaysOnOFF_Click(object sender, EventArgs e)
+        {
+            
+            picAlwaysOn.Visible = true;
+            picAlwaysOnOFF.Visible = false;
+            timer1.Stop();
+
+        }
+        private void PicAlwaysOnTimer_Tick(object sender, EventArgs e)
+        {
+            // Move the mouse pointer to a specific location
+            Cursor.Position = new System.Drawing.Point(0, Cursor.Position.Y + 5);
+
+            // Simulate pressing the Shift key one times
+            for (int i = 0; i < 1; i++)
+            {
+                SendKeys.SendWait("+");
+            }
+        }
     }
 }

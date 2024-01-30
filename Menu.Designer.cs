@@ -32,6 +32,10 @@ namespace Floating_Controller
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.bunifuGradientPanel1 = new Bunifu.UI.WinForms.BunifuGradientPanel();
+            this.picAlwaysOnOFF = new System.Windows.Forms.PictureBox();
+            this.picRotate270 = new System.Windows.Forms.PictureBox();
+            this.picRotate180 = new System.Windows.Forms.PictureBox();
+            this.picRotate90 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
@@ -42,15 +46,17 @@ namespace Floating_Controller
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.picAlwaysOn = new System.Windows.Forms.PictureBox();
             this.picRotateReset = new System.Windows.Forms.PictureBox();
             this.picRotate = new System.Windows.Forms.PictureBox();
             this.picScreenShot = new System.Windows.Forms.PictureBox();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.picRotate90 = new System.Windows.Forms.PictureBox();
-            this.picRotate180 = new System.Windows.Forms.PictureBox();
-            this.picRotate270 = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.bunifuGradientPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAlwaysOnOFF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRotate270)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRotate180)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRotate90)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
@@ -61,13 +67,10 @@ namespace Floating_Controller
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAlwaysOn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotateReset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picScreenShot)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picRotate90)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picRotate180)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picRotate270)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuGradientPanel1
@@ -76,6 +79,7 @@ namespace Floating_Controller
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuGradientPanel1.BorderRadius = 1;
+            this.bunifuGradientPanel1.Controls.Add(this.picAlwaysOnOFF);
             this.bunifuGradientPanel1.Controls.Add(this.picRotate270);
             this.bunifuGradientPanel1.Controls.Add(this.picRotate180);
             this.bunifuGradientPanel1.Controls.Add(this.picRotate90);
@@ -89,7 +93,7 @@ namespace Floating_Controller
             this.bunifuGradientPanel1.Controls.Add(this.pictureBox6);
             this.bunifuGradientPanel1.Controls.Add(this.pictureBox7);
             this.bunifuGradientPanel1.Controls.Add(this.pictureBox8);
-            this.bunifuGradientPanel1.Controls.Add(this.pictureBox3);
+            this.bunifuGradientPanel1.Controls.Add(this.picAlwaysOn);
             this.bunifuGradientPanel1.Controls.Add(this.picRotateReset);
             this.bunifuGradientPanel1.Controls.Add(this.picRotate);
             this.bunifuGradientPanel1.Controls.Add(this.picScreenShot);
@@ -104,6 +108,50 @@ namespace Floating_Controller
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(126, 343);
             this.bunifuGradientPanel1.TabIndex = 0;
             this.bunifuGradientPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bunifuGradientPanel1_MouseDown);
+            // 
+            // picAlwaysOnOFF
+            // 
+            this.picAlwaysOnOFF.Image = ((System.Drawing.Image)(resources.GetObject("picAlwaysOnOFF.Image")));
+            this.picAlwaysOnOFF.Location = new System.Drawing.Point(18, 153);
+            this.picAlwaysOnOFF.Name = "picAlwaysOnOFF";
+            this.picAlwaysOnOFF.Size = new System.Drawing.Size(40, 40);
+            this.picAlwaysOnOFF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picAlwaysOnOFF.TabIndex = 17;
+            this.picAlwaysOnOFF.TabStop = false;
+            this.picAlwaysOnOFF.Click += new System.EventHandler(this.picAlwaysOnOFF_Click);
+            // 
+            // picRotate270
+            // 
+            this.picRotate270.Image = ((System.Drawing.Image)(resources.GetObject("picRotate270.Image")));
+            this.picRotate270.Location = new System.Drawing.Point(18, 55);
+            this.picRotate270.Name = "picRotate270";
+            this.picRotate270.Size = new System.Drawing.Size(40, 40);
+            this.picRotate270.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picRotate270.TabIndex = 16;
+            this.picRotate270.TabStop = false;
+            this.picRotate270.Click += new System.EventHandler(this.picRotate270_Click);
+            // 
+            // picRotate180
+            // 
+            this.picRotate180.Image = ((System.Drawing.Image)(resources.GetObject("picRotate180.Image")));
+            this.picRotate180.Location = new System.Drawing.Point(18, 55);
+            this.picRotate180.Name = "picRotate180";
+            this.picRotate180.Size = new System.Drawing.Size(40, 40);
+            this.picRotate180.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picRotate180.TabIndex = 15;
+            this.picRotate180.TabStop = false;
+            this.picRotate180.Click += new System.EventHandler(this.picRotate180_Click);
+            // 
+            // picRotate90
+            // 
+            this.picRotate90.Image = ((System.Drawing.Image)(resources.GetObject("picRotate90.Image")));
+            this.picRotate90.Location = new System.Drawing.Point(18, 55);
+            this.picRotate90.Name = "picRotate90";
+            this.picRotate90.Size = new System.Drawing.Size(40, 40);
+            this.picRotate90.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picRotate90.TabIndex = 14;
+            this.picRotate90.TabStop = false;
+            this.picRotate90.Click += new System.EventHandler(this.picRotate90_Click);
             // 
             // pictureBox5
             // 
@@ -205,15 +253,16 @@ namespace Floating_Controller
             this.pictureBox8.TabIndex = 4;
             this.pictureBox8.TabStop = false;
             // 
-            // pictureBox3
+            // picAlwaysOn
             // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(18, 153);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 3;
-            this.pictureBox3.TabStop = false;
+            this.picAlwaysOn.Image = ((System.Drawing.Image)(resources.GetObject("picAlwaysOn.Image")));
+            this.picAlwaysOn.Location = new System.Drawing.Point(18, 153);
+            this.picAlwaysOn.Name = "picAlwaysOn";
+            this.picAlwaysOn.Size = new System.Drawing.Size(40, 40);
+            this.picAlwaysOn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picAlwaysOn.TabIndex = 3;
+            this.picAlwaysOn.TabStop = false;
+            this.picAlwaysOn.Click += new System.EventHandler(this.picAlwaysOn_Click);
             // 
             // picRotateReset
             // 
@@ -253,39 +302,6 @@ namespace Floating_Controller
             this.bunifuElipse1.ElipseRadius = 20;
             this.bunifuElipse1.TargetControl = this;
             // 
-            // picRotate90
-            // 
-            this.picRotate90.Image = ((System.Drawing.Image)(resources.GetObject("picRotate90.Image")));
-            this.picRotate90.Location = new System.Drawing.Point(18, 55);
-            this.picRotate90.Name = "picRotate90";
-            this.picRotate90.Size = new System.Drawing.Size(40, 40);
-            this.picRotate90.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picRotate90.TabIndex = 14;
-            this.picRotate90.TabStop = false;
-            this.picRotate90.Click += new System.EventHandler(this.picRotate90_Click);
-            // 
-            // picRotate180
-            // 
-            this.picRotate180.Image = ((System.Drawing.Image)(resources.GetObject("picRotate180.Image")));
-            this.picRotate180.Location = new System.Drawing.Point(18, 55);
-            this.picRotate180.Name = "picRotate180";
-            this.picRotate180.Size = new System.Drawing.Size(40, 40);
-            this.picRotate180.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picRotate180.TabIndex = 15;
-            this.picRotate180.TabStop = false;
-            this.picRotate180.Click += new System.EventHandler(this.picRotate180_Click);
-            // 
-            // picRotate270
-            // 
-            this.picRotate270.Image = ((System.Drawing.Image)(resources.GetObject("picRotate270.Image")));
-            this.picRotate270.Location = new System.Drawing.Point(18, 55);
-            this.picRotate270.Name = "picRotate270";
-            this.picRotate270.Size = new System.Drawing.Size(40, 40);
-            this.picRotate270.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picRotate270.TabIndex = 16;
-            this.picRotate270.TabStop = false;
-            this.picRotate270.Click += new System.EventHandler(this.picRotate270_Click);
-            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -305,6 +321,10 @@ namespace Floating_Controller
             this.TopMost = true;
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Menu_KeyDown);
             this.bunifuGradientPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picAlwaysOnOFF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRotate270)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRotate180)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRotate90)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
@@ -315,13 +335,10 @@ namespace Floating_Controller
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAlwaysOn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotateReset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picScreenShot)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picRotate90)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picRotate180)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picRotate270)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -340,12 +357,14 @@ namespace Floating_Controller
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox picAlwaysOn;
         private System.Windows.Forms.PictureBox picRotateReset;
         private System.Windows.Forms.PictureBox picRotate;
         private System.Windows.Forms.PictureBox picScreenShot;
         private System.Windows.Forms.PictureBox picRotate270;
         private System.Windows.Forms.PictureBox picRotate180;
         private System.Windows.Forms.PictureBox picRotate90;
+        private System.Windows.Forms.PictureBox picAlwaysOnOFF;
+        private System.Windows.Forms.Timer timer1;
     }
 }

@@ -51,7 +51,7 @@ namespace Floating_Controller
             // lblMessage
             // 
             this.lblMessage.AutoSize = true;
-            this.lblMessage.Location = new System.Drawing.Point(53, 26);
+            this.lblMessage.Location = new System.Drawing.Point(45, 26);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(80, 13);
             this.lblMessage.TabIndex = 6;
@@ -61,7 +61,7 @@ namespace Floating_Controller
             // 
             this.lblType.AutoSize = true;
             this.lblType.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblType.Location = new System.Drawing.Point(53, 6);
+            this.lblType.Location = new System.Drawing.Point(45, 6);
             this.lblType.Name = "lblType";
             this.lblType.Size = new System.Drawing.Size(44, 18);
             this.lblType.TabIndex = 5;

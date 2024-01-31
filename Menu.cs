@@ -40,12 +40,14 @@ namespace Floating_Controller
         [DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
 
-        
 
-        public void ToastShow(string type, string message)
+        public static class ToastHelper
         {
-            TaostNotification toast = new TaostNotification(type, message);
-            toast.Show();
+            public static void ToastShow(string type, string message)
+            {
+                TaostNotification toast = new TaostNotification(type, message);
+                toast.Show();
+            }
         }
 
         private void picScreenShot_Click(object sender, EventArgs e)
@@ -61,7 +63,7 @@ namespace Floating_Controller
 
             // Save the screenshot to the Pictures folder
             SaveScreenshot(screenshot);
-            ToastShow("SUCCESS", "Save Successful.");
+            ToastHelper.ToastShow("SUCCESS", "Save Successful.");
 
             // Restore Form1 to normal state
             Program.MainForm.WindowState = FormWindowState.Normal;
@@ -104,7 +106,7 @@ namespace Floating_Controller
             screenshot.Save(filePath, System.Drawing.Imaging.ImageFormat.Png);
 
             // Optionally, you can display a message to the user or open the folder containing the screenshot
-            ToastShow("SUCCESS", "Save Successful.");
+            ToastHelper.ToastShow("SUCCESS", "Save Successful.");
         }
 
         private void Menu_KeyDown(object sender, KeyEventArgs e)
@@ -429,7 +431,7 @@ namespace Floating_Controller
         private void picRotateReset_Click(object sender, EventArgs e)
         {
             ResetAllRotations();
-            ToastShow("INFO", "Reset Rotate to default.");
+            ToastHelper.ToastShow("INFO", "Reset Rotate to default.");
 
         }
 
@@ -586,7 +588,7 @@ namespace Floating_Controller
 
 
             // Inform the user about the mode change.
-            ToastShow("SUCCESS", "Power mode set to Better Battery.");
+            ToastHelper.ToastShow("SUCCESS", "Power mode set to Better Battery.");
 
         }
 
@@ -594,7 +596,7 @@ namespace Floating_Controller
         {
             picAlwaysOn.Visible = false;
             picAlwaysOnOFF.Visible = true;
-            ToastShow("SUCCESS", "Screen Always ON Activated.");
+            ToastHelper.ToastShow("SUCCESS", "Screen Always ON Activated.");
         }
 
         private void picAlwaysOnOFF_Click(object sender, EventArgs e)
@@ -603,7 +605,7 @@ namespace Floating_Controller
             picAlwaysOn.Visible = true;
             picAlwaysOnOFF.Visible = false;
             timer1.Stop();
-            ToastShow("SUCCESS", "Screen Always ON Deactivated.");
+            ToastHelper.ToastShow("SUCCESS", "Screen Always ON Deactivated.");
 
         }
         private void PicAlwaysOnTimer_Tick(object sender, EventArgs e)
@@ -726,7 +728,7 @@ namespace Floating_Controller
         private void picKeyboardOnScreen_Click(object sender, EventArgs e)
         {
             KeyboardSimulator.SimulateKeyPress();
-            ToastShow("SUCCESS", "ON Keyboard Screen Activated.");
+            ToastHelper.ToastShow("SUCCESS", "ON Keyboard Screen Activated.");
         }
     
         const int VK_OEM_PERIOD = 0xBE; // Period key
@@ -745,7 +747,7 @@ namespace Floating_Controller
             // Release the Windows key
             keybd_event((byte)VK_LWIN, 0, KEYEVENTF_KEYUP, IntPtr.Zero);
 
-            ToastShow("SUCCESS", "Emoji Keyboard Activated.");
+            //ToastShow("SUCCESS", "Emoji Keyboard Activated.");
 
         }
         private const uint SPI_SETSTICKYKEYS = 0x003B;
@@ -768,11 +770,11 @@ namespace Floating_Controller
             {
                 picDisableStickyKeys.Visible = false;
                 picDisableStickyKeysEnable.Visible = true;
-                ToastShow("SUCCESS", "Sticky Keys Disabled.");
+                ToastHelper.ToastShow("SUCCESS", "Sticky Keys Disabled.");
             }
             else
             {
-                ToastShow("ERROR", "Failed to disable Sticky Keys.");
+                ToastHelper.ToastShow("ERROR", "Failed to disable Sticky Keys.");
             }
         }
 
@@ -782,11 +784,11 @@ namespace Floating_Controller
             {
                 picDisableStickyKeys.Visible = true;
                 picDisableStickyKeysEnable.Visible = false;
-                ToastShow("SUCCESS", "Sticky Keys Enabled.");
+                ToastHelper.ToastShow("SUCCESS", "Sticky Keys Enabled.");
             }
             else
             {
-                ToastShow("ERROR", "Failed to enable Sticky Keys.");
+                ToastHelper.ToastShow("ERROR", "Failed to enable Sticky Keys.");
             }
         }
 
@@ -815,6 +817,28 @@ namespace Floating_Controller
 
             return SystemParametersInfo(SPI_SETSTICKYKEYS, sk.cbSize, ref sk, SPIF_SENDCHANGE);
         }
-  
+        
+        const int VK_V = 0x56; // 'V' key
+        private void picClipboardHistory_Click(object sender, EventArgs e)
+        {
+            // Simulate holding down the Windows key
+            keybd_event((byte)VK_LWIN, 0, KEYEVENTF_EXTENDEDKEY, IntPtr.Zero);
+            //Thread.Sleep(50); // Add a small delay if needed
+
+            // Simulate pressing the 'V' key
+            keybd_event((byte)VK_V, 0, 0, IntPtr.Zero);
+            //Thread.Sleep(50); // Add a small delay if needed
+            keybd_event((byte)VK_V, 0, KEYEVENTF_KEYUP, IntPtr.Zero);
+
+            // Release the Windows key
+            keybd_event((byte)VK_LWIN, 0, KEYEVENTF_KEYUP, IntPtr.Zero);
+        }
+       
+
+        private void picRefreshRateMax_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

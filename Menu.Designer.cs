@@ -32,17 +32,18 @@ namespace Floating_Controller
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.bunifuGradientPanel1 = new Bunifu.UI.WinForms.BunifuGradientPanel();
+            this.picDisableStickyKeysEnable = new System.Windows.Forms.PictureBox();
             this.picAlwaysOnOFF = new System.Windows.Forms.PictureBox();
             this.picRotate270 = new System.Windows.Forms.PictureBox();
             this.picRotate180 = new System.Windows.Forms.PictureBox();
             this.picRotate90 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.picRefreshRateMax = new System.Windows.Forms.PictureBox();
+            this.picClipboardHistory = new System.Windows.Forms.PictureBox();
             this.picDisableStickyKeys = new System.Windows.Forms.PictureBox();
             this.picEmojiKeyboard = new System.Windows.Forms.PictureBox();
-            this.pictureBox14 = new System.Windows.Forms.PictureBox();
+            this.picGodModeFolder = new System.Windows.Forms.PictureBox();
             this.picKeyboardOnScreen = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
@@ -52,19 +53,19 @@ namespace Floating_Controller
             this.picScreenShot = new System.Windows.Forms.PictureBox();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.picDisableStickyKeysEnable = new System.Windows.Forms.PictureBox();
             this.bunifuGradientPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picDisableStickyKeysEnable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAlwaysOnOFF)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotate270)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotate180)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotate90)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRefreshRateMax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picClipboardHistory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDisableStickyKeys)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEmojiKeyboard)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picGodModeFolder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picKeyboardOnScreen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -72,7 +73,6 @@ namespace Floating_Controller
             ((System.ComponentModel.ISupportInitialize)(this.picRotateReset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picScreenShot)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picDisableStickyKeysEnable)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuGradientPanel1
@@ -88,11 +88,11 @@ namespace Floating_Controller
             this.bunifuGradientPanel1.Controls.Add(this.picRotate90);
             this.bunifuGradientPanel1.Controls.Add(this.pictureBox5);
             this.bunifuGradientPanel1.Controls.Add(this.pictureBox9);
-            this.bunifuGradientPanel1.Controls.Add(this.pictureBox10);
-            this.bunifuGradientPanel1.Controls.Add(this.pictureBox11);
+            this.bunifuGradientPanel1.Controls.Add(this.picRefreshRateMax);
+            this.bunifuGradientPanel1.Controls.Add(this.picClipboardHistory);
             this.bunifuGradientPanel1.Controls.Add(this.picDisableStickyKeys);
             this.bunifuGradientPanel1.Controls.Add(this.picEmojiKeyboard);
-            this.bunifuGradientPanel1.Controls.Add(this.pictureBox14);
+            this.bunifuGradientPanel1.Controls.Add(this.picGodModeFolder);
             this.bunifuGradientPanel1.Controls.Add(this.picKeyboardOnScreen);
             this.bunifuGradientPanel1.Controls.Add(this.pictureBox7);
             this.bunifuGradientPanel1.Controls.Add(this.pictureBox8);
@@ -111,6 +111,17 @@ namespace Floating_Controller
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(126, 343);
             this.bunifuGradientPanel1.TabIndex = 0;
             this.bunifuGradientPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bunifuGradientPanel1_MouseDown);
+            // 
+            // picDisableStickyKeysEnable
+            // 
+            this.picDisableStickyKeysEnable.Image = ((System.Drawing.Image)(resources.GetObject("picDisableStickyKeysEnable.Image")));
+            this.picDisableStickyKeysEnable.Location = new System.Drawing.Point(79, 105);
+            this.picDisableStickyKeysEnable.Name = "picDisableStickyKeysEnable";
+            this.picDisableStickyKeysEnable.Size = new System.Drawing.Size(40, 40);
+            this.picDisableStickyKeysEnable.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picDisableStickyKeysEnable.TabIndex = 18;
+            this.picDisableStickyKeysEnable.TabStop = false;
+            this.picDisableStickyKeysEnable.Click += new System.EventHandler(this.picDisableStickyKeysEnable_Click);
             // 
             // picAlwaysOnOFF
             // 
@@ -176,25 +187,27 @@ namespace Floating_Controller
             this.pictureBox9.TabIndex = 12;
             this.pictureBox9.TabStop = false;
             // 
-            // pictureBox10
+            // picRefreshRateMax
             // 
-            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
-            this.pictureBox10.Location = new System.Drawing.Point(79, 201);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox10.TabIndex = 11;
-            this.pictureBox10.TabStop = false;
+            this.picRefreshRateMax.Image = ((System.Drawing.Image)(resources.GetObject("picRefreshRateMax.Image")));
+            this.picRefreshRateMax.Location = new System.Drawing.Point(79, 201);
+            this.picRefreshRateMax.Name = "picRefreshRateMax";
+            this.picRefreshRateMax.Size = new System.Drawing.Size(40, 40);
+            this.picRefreshRateMax.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picRefreshRateMax.TabIndex = 11;
+            this.picRefreshRateMax.TabStop = false;
+            this.picRefreshRateMax.Click += new System.EventHandler(this.picRefreshRateMax_Click);
             // 
-            // pictureBox11
+            // picClipboardHistory
             // 
-            this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
-            this.pictureBox11.Location = new System.Drawing.Point(79, 153);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox11.TabIndex = 10;
-            this.pictureBox11.TabStop = false;
+            this.picClipboardHistory.Image = ((System.Drawing.Image)(resources.GetObject("picClipboardHistory.Image")));
+            this.picClipboardHistory.Location = new System.Drawing.Point(79, 153);
+            this.picClipboardHistory.Name = "picClipboardHistory";
+            this.picClipboardHistory.Size = new System.Drawing.Size(40, 40);
+            this.picClipboardHistory.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picClipboardHistory.TabIndex = 10;
+            this.picClipboardHistory.TabStop = false;
+            this.picClipboardHistory.Click += new System.EventHandler(this.picClipboardHistory_Click);
             // 
             // picDisableStickyKeys
             // 
@@ -218,15 +231,15 @@ namespace Floating_Controller
             this.picEmojiKeyboard.TabStop = false;
             this.picEmojiKeyboard.Click += new System.EventHandler(this.picEmojiKeyboard_Click);
             // 
-            // pictureBox14
+            // picGodModeFolder
             // 
-            this.pictureBox14.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox14.Image")));
-            this.pictureBox14.Location = new System.Drawing.Point(79, 9);
-            this.pictureBox14.Name = "pictureBox14";
-            this.pictureBox14.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox14.TabIndex = 7;
-            this.pictureBox14.TabStop = false;
+            this.picGodModeFolder.Image = ((System.Drawing.Image)(resources.GetObject("picGodModeFolder.Image")));
+            this.picGodModeFolder.Location = new System.Drawing.Point(79, 9);
+            this.picGodModeFolder.Name = "picGodModeFolder";
+            this.picGodModeFolder.Size = new System.Drawing.Size(40, 40);
+            this.picGodModeFolder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picGodModeFolder.TabIndex = 7;
+            this.picGodModeFolder.TabStop = false;
             // 
             // picKeyboardOnScreen
             // 
@@ -308,17 +321,6 @@ namespace Floating_Controller
             this.bunifuElipse1.ElipseRadius = 20;
             this.bunifuElipse1.TargetControl = this;
             // 
-            // picDisableStickyKeysEnable
-            // 
-            this.picDisableStickyKeysEnable.Image = ((System.Drawing.Image)(resources.GetObject("picDisableStickyKeysEnable.Image")));
-            this.picDisableStickyKeysEnable.Location = new System.Drawing.Point(79, 105);
-            this.picDisableStickyKeysEnable.Name = "picDisableStickyKeysEnable";
-            this.picDisableStickyKeysEnable.Size = new System.Drawing.Size(40, 40);
-            this.picDisableStickyKeysEnable.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picDisableStickyKeysEnable.TabIndex = 18;
-            this.picDisableStickyKeysEnable.TabStop = false;
-            this.picDisableStickyKeysEnable.Click += new System.EventHandler(this.picDisableStickyKeysEnable_Click);
-            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -338,17 +340,18 @@ namespace Floating_Controller
             this.TopMost = true;
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Menu_KeyDown);
             this.bunifuGradientPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picDisableStickyKeysEnable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAlwaysOnOFF)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotate270)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotate180)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotate90)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRefreshRateMax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picClipboardHistory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDisableStickyKeys)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEmojiKeyboard)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picGodModeFolder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picKeyboardOnScreen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
@@ -356,7 +359,6 @@ namespace Floating_Controller
             ((System.ComponentModel.ISupportInitialize)(this.picRotateReset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picScreenShot)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picDisableStickyKeysEnable)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -367,11 +369,11 @@ namespace Floating_Controller
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox9;
-        private System.Windows.Forms.PictureBox pictureBox10;
-        private System.Windows.Forms.PictureBox pictureBox11;
+        private System.Windows.Forms.PictureBox picRefreshRateMax;
+        private System.Windows.Forms.PictureBox picClipboardHistory;
         private System.Windows.Forms.PictureBox picDisableStickyKeys;
         private System.Windows.Forms.PictureBox picEmojiKeyboard;
-        private System.Windows.Forms.PictureBox pictureBox14;
+        private System.Windows.Forms.PictureBox picGodModeFolder;
         private System.Windows.Forms.PictureBox picKeyboardOnScreen;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox8;

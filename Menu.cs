@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Configuration;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Floating_Controller
@@ -24,6 +27,7 @@ namespace Floating_Controller
             picRotate180.Visible = false;
             picRotate270.Visible = false;
             picAlwaysOnOFF.Visible = false;
+            picDisableStickyKeysEnable.Visible = false;
             timer1.Interval = 15000; // Set the interval to 15 seconds (adjust as needed)
             timer1.Tick += PicAlwaysOnTimer_Tick;
             timer1.Start();
@@ -425,6 +429,8 @@ namespace Floating_Controller
         private void picRotateReset_Click(object sender, EventArgs e)
         {
             ResetAllRotations();
+            ToastShow("INFO", "Reset Rotate to default.");
+
         }
 
         public void SetPowerMode(string[] args)
@@ -580,7 +586,7 @@ namespace Floating_Controller
 
 
             // Inform the user about the mode change.
-            ToastShow("Energy Saver", "Power mode set to Better Battery.");
+            ToastShow("SUCCESS", "Power mode set to Better Battery.");
 
         }
 
@@ -588,6 +594,7 @@ namespace Floating_Controller
         {
             picAlwaysOn.Visible = false;
             picAlwaysOnOFF.Visible = true;
+            ToastShow("SUCCESS", "Screen Always ON Activated.");
         }
 
         private void picAlwaysOnOFF_Click(object sender, EventArgs e)
@@ -596,6 +603,7 @@ namespace Floating_Controller
             picAlwaysOn.Visible = true;
             picAlwaysOnOFF.Visible = false;
             timer1.Stop();
+            ToastShow("SUCCESS", "Screen Always ON Deactivated.");
 
         }
         private void PicAlwaysOnTimer_Tick(object sender, EventArgs e)
@@ -609,5 +617,204 @@ namespace Floating_Controller
                 SendKeys.SendWait("+");
             }
         }
+        [DllImport("shell32.dll")]
+        public static extern bool SHGetSpecialFolderPath(
+       IntPtr hwndOwner, [Out] StringBuilder lpszPath, int nFolder, bool fCreate
+   );
+        public class KeyboardSimulator
+        {
+            [DllImport("user32.dll")]
+            private static extern void keybd_event(byte bVk, byte bScan, uint dwFlags, IntPtr dwExtraInfo);
+
+            [DllImport("user32.dll", SetLastError = true)]
+            private static extern uint SendInput(uint nInputs, INPUT[] pInputs, int cbSize);
+
+            [StructLayout(LayoutKind.Sequential)]
+            public struct INPUT
+            {
+                public uint type;
+                public InputUnion U;
+            }
+
+            [StructLayout(LayoutKind.Explicit)]
+            public struct InputUnion
+            {
+                [FieldOffset(0)]
+                public MOUSEINPUT mi;
+
+                [FieldOffset(0)]
+                public KEYBDINPUT ki;
+
+                [FieldOffset(0)]
+                public HARDWAREINPUT hi;
+            }
+
+            [StructLayout(LayoutKind.Sequential)]
+            public struct KEYBDINPUT
+            {
+                public ushort wVk;
+                public ushort wScan;
+                public uint dwFlags;
+                public uint time;
+                public IntPtr dwExtraInfo;
+            }
+
+            [StructLayout(LayoutKind.Sequential)]
+            public struct MOUSEINPUT
+            {
+                public int dx;
+                public int dy;
+                public uint mouseData;
+                public uint dwFlags;
+                public uint time;
+                public IntPtr dwExtraInfo;
+            }
+
+            [StructLayout(LayoutKind.Sequential)]
+            public struct HARDWAREINPUT
+            {
+                public uint uMsg;
+                public ushort wParamL;
+                public ushort wParamH;
+            }
+
+            const uint INPUT_KEYBOARD = 1;
+            const uint KEYEVENTF_KEYUP = 0x0002;
+            const int VK_LWIN = 0x5B; // Left Windows key
+            const int VK_CONTROL = 0x11; // Control key
+            const int VK_O = 0x4F; // 'O' key
+
+            public static void SimulateKeyPress()
+            {
+                INPUT[] inputs = new INPUT[6];
+
+                inputs[0].type = INPUT_KEYBOARD;
+                inputs[0].U.ki.wVk = (ushort)VK_LWIN;
+
+                inputs[1].type = INPUT_KEYBOARD;
+                inputs[1].U.ki.wVk = (ushort)VK_CONTROL;
+
+                inputs[2].type = INPUT_KEYBOARD;
+                inputs[2].U.ki.wVk = (ushort)VK_O;
+
+                inputs[3].type = INPUT_KEYBOARD;
+                inputs[3].U.ki.wVk = (ushort)VK_O;
+                inputs[3].U.ki.dwFlags = KEYEVENTF_KEYUP;
+
+                inputs[4].type = INPUT_KEYBOARD;
+                inputs[4].U.ki.wVk = (ushort)VK_CONTROL;
+                inputs[4].U.ki.dwFlags = KEYEVENTF_KEYUP;
+
+                inputs[5].type = INPUT_KEYBOARD;
+                inputs[5].U.ki.wVk = (ushort)VK_LWIN;
+                inputs[5].U.ki.dwFlags = KEYEVENTF_KEYUP;
+
+                SendInput(6, inputs, Marshal.SizeOf(typeof(INPUT)));
+            }
+        }
+
+        const int KEYEVENTF_EXTENDEDKEY = 0x0001;
+        const int KEYEVENTF_KEYUP = 0x0002;
+        const int VK_LWIN = 0x5B; // Left Windows key
+        const int VK_CONTROL = 0x11; // Control key
+        const int VK_O = 0x4F; // 'O' key
+
+        [DllImport("user32.dll")]
+        public static extern void keybd_event(byte virtualKey, byte scanCode, int flags, IntPtr extraInfo);
+
+
+        private void picKeyboardOnScreen_Click(object sender, EventArgs e)
+        {
+            KeyboardSimulator.SimulateKeyPress();
+            ToastShow("SUCCESS", "ON Keyboard Screen Activated.");
+        }
+    
+        const int VK_OEM_PERIOD = 0xBE; // Period key
+
+        private void picEmojiKeyboard_Click(object sender, EventArgs e)
+        {
+            // Simulate pressing Windows key + period
+            // Simulate holding down the Windows key
+            keybd_event((byte)VK_LWIN, 0, KEYEVENTF_EXTENDEDKEY, IntPtr.Zero);
+            //Thread.Sleep(100); // Add a small delay if needed
+
+            // Simulate pressing the period key
+            keybd_event((byte)VK_OEM_PERIOD, 0, 0, IntPtr.Zero);
+            keybd_event((byte)VK_OEM_PERIOD, 0, KEYEVENTF_KEYUP, IntPtr.Zero);
+
+            // Release the Windows key
+            keybd_event((byte)VK_LWIN, 0, KEYEVENTF_KEYUP, IntPtr.Zero);
+
+            ToastShow("SUCCESS", "Emoji Keyboard Activated.");
+
+        }
+        private const uint SPI_SETSTICKYKEYS = 0x003B;
+        private const uint SPIF_SENDCHANGE = 0x02;
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct STICKYKEYS
+        {
+            public uint cbSize;
+            public uint dwFlags;
+        }
+
+        [DllImport("user32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool SystemParametersInfo(uint uiAction, uint uiParam, ref STICKYKEYS pvParam, uint fWinIni);
+
+        private void picDisableStickyKeys_Click(object sender, EventArgs e)
+        {
+            if (DisableStickyKeys())
+            {
+                picDisableStickyKeys.Visible = false;
+                picDisableStickyKeysEnable.Visible = true;
+                ToastShow("SUCCESS", "Sticky Keys Disabled.");
+            }
+            else
+            {
+                ToastShow("ERROR", "Failed to disable Sticky Keys.");
+            }
+        }
+
+        private void picDisableStickyKeysEnable_Click(object sender, EventArgs e)
+        {
+            if (EnableStickyKeys())
+            {
+                picDisableStickyKeys.Visible = true;
+                picDisableStickyKeysEnable.Visible = false;
+                ToastShow("SUCCESS", "Sticky Keys Enabled.");
+            }
+            else
+            {
+                ToastShow("ERROR", "Failed to enable Sticky Keys.");
+            }
+        }
+
+        public static bool DisableStickyKeys()
+        {
+            STICKYKEYS sk = new STICKYKEYS();
+            sk.cbSize = (uint)Marshal.SizeOf(typeof(STICKYKEYS));
+            sk.dwFlags = 0; // Set to 0 to disable Sticky Keys
+
+            bool result = SystemParametersInfo(SPI_SETSTICKYKEYS, sk.cbSize, ref sk, SPIF_SENDCHANGE);
+
+            if (!result)
+            {
+                int error = Marshal.GetLastWin32Error();
+                Console.WriteLine($"Failed to disable Sticky Keys. Error code: {error}");
+            }
+
+            return result;
+        }
+
+        public static bool EnableStickyKeys()
+        {
+            STICKYKEYS sk = new STICKYKEYS();
+            sk.cbSize = (uint)Marshal.SizeOf(typeof(STICKYKEYS));
+            sk.dwFlags = 0x00000001; // Set to 0x00000001 to enable Sticky Keys
+
+            return SystemParametersInfo(SPI_SETSTICKYKEYS, sk.cbSize, ref sk, SPIF_SENDCHANGE);
+        }
+  
     }
 }

@@ -22,7 +22,7 @@ namespace Floating_Controller
                     picIcon.Image = Properties.Resources.icons8_ok_240;
                     break;
                 case "WARNING":
-                    pnlBorder.BackColor = Color.FromArgb(217, 24, 24);
+                    pnlBorder.BackColor = Color.FromArgb(208, 22, 0);
                     picIcon.Image = Properties.Resources.icons8_cancel_240;
                     break;
                 case "INFO":

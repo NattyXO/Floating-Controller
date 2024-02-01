@@ -55,6 +55,7 @@ namespace Floating_Controller
             this.lblPicInfo = new Bunifu.UI.WinForms.BunifuLabel();
             this.picRemoveActivateWindowWaterMark = new System.Windows.Forms.PictureBox();
             this.picMaxFPSDisable = new System.Windows.Forms.PictureBox();
+            this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picDisableStickyKeysEnable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAlwaysOnOFF)).BeginInit();
@@ -84,9 +85,10 @@ namespace Floating_Controller
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuGradientPanel1.BorderRadius = 1;
+            this.bunifuGradientPanel1.Controls.Add(this.bunifuLabel1);
+            this.bunifuGradientPanel1.Controls.Add(this.lblPicInfo);
             this.bunifuGradientPanel1.Controls.Add(this.picMaxFPSDisable);
             this.bunifuGradientPanel1.Controls.Add(this.picRemoveActivateWindowWaterMark);
-            this.bunifuGradientPanel1.Controls.Add(this.lblPicInfo);
             this.bunifuGradientPanel1.Controls.Add(this.picDisableStickyKeysEnable);
             this.bunifuGradientPanel1.Controls.Add(this.picAlwaysOnOFF);
             this.bunifuGradientPanel1.Controls.Add(this.picRotate270);
@@ -212,6 +214,8 @@ namespace Floating_Controller
             this.picMaxFPS.TabIndex = 11;
             this.picMaxFPS.TabStop = false;
             this.picMaxFPS.Click += new System.EventHandler(this.picMaxFPS_Click);
+            this.picMaxFPS.MouseLeave += new System.EventHandler(this.picMaxFPS_MouseLeave);
+            this.picMaxFPS.MouseHover += new System.EventHandler(this.picMaxFPS_MouseHover);
             // 
             // picClipboardHistory
             // 
@@ -371,6 +375,8 @@ namespace Floating_Controller
             this.picRemoveActivateWindowWaterMark.TabIndex = 20;
             this.picRemoveActivateWindowWaterMark.TabStop = false;
             this.picRemoveActivateWindowWaterMark.Click += new System.EventHandler(this.picRemoveActivateWindowWaterMark_Click);
+            this.picRemoveActivateWindowWaterMark.MouseLeave += new System.EventHandler(this.picRemoveActivateWindowWaterMark_MouseLeave);
+            this.picRemoveActivateWindowWaterMark.MouseHover += new System.EventHandler(this.picRemoveActivateWindowWaterMark_MouseHover);
             // 
             // picMaxFPSDisable
             // 
@@ -382,6 +388,25 @@ namespace Floating_Controller
             this.picMaxFPSDisable.TabIndex = 21;
             this.picMaxFPSDisable.TabStop = false;
             this.picMaxFPSDisable.Click += new System.EventHandler(this.picMaxFPSDisable_Click);
+            this.picMaxFPSDisable.MouseLeave += new System.EventHandler(this.picMaxFPSDisable_MouseLeave);
+            this.picMaxFPSDisable.MouseHover += new System.EventHandler(this.picMaxFPSDisable_MouseHover);
+            // 
+            // bunifuLabel1
+            // 
+            this.bunifuLabel1.AllowParentOverrides = false;
+            this.bunifuLabel1.AutoEllipsis = false;
+            this.bunifuLabel1.AutoSize = false;
+            this.bunifuLabel1.BackColor = System.Drawing.Color.White;
+            this.bunifuLabel1.CursorType = null;
+            this.bunifuLabel1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.bunifuLabel1.Location = new System.Drawing.Point(8, 211);
+            this.bunifuLabel1.Name = "bunifuLabel1";
+            this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel1.Size = new System.Drawing.Size(115, 30);
+            this.bunifuLabel1.TabIndex = 22;
+            this.bunifuLabel1.Text = "bunifuLabel1";
+            this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // Menu
             // 
@@ -453,5 +478,6 @@ namespace Floating_Controller
         private Bunifu.UI.WinForms.BunifuLabel lblPicInfo;
         private System.Windows.Forms.PictureBox picRemoveActivateWindowWaterMark;
         private System.Windows.Forms.PictureBox picMaxFPSDisable;
+        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
     }
 }

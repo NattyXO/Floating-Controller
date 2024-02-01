@@ -31,6 +31,7 @@ namespace Floating_Controller
             picDisableStickyKeysEnable.Visible = false;
             lblPicInfo.Visible = false;
             picMaxFPSDisable.Visible = false;
+            bunifuLabel1.Visible = false;
             timer1.Interval = 15000; // Set the interval to 15 seconds (adjust as needed)
             timer1.Tick += PicAlwaysOnTimer_Tick;
             timer1.Start();
@@ -939,7 +940,7 @@ namespace Floating_Controller
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Rotate 270 Degree";
             // Move lblPicInfo to the right by 20 pixels
-            lblPicInfo.Location = new Point(picRotate270.Location.X + 20, picRotate270.Location.Y);
+            lblPicInfo.Location = new Point(picRotate270.Location.X + 20, picRotate270.Location.Y-20);
         }
 
         private void picRotate270_MouseLeave(object sender, EventArgs e)
@@ -952,7 +953,7 @@ namespace Floating_Controller
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Rotate 180 Degree";
             // Move lblPicInfo to the right by 20 pixels
-            lblPicInfo.Location = new Point(picRotate180.Location.X + 20, picRotate180.Location.Y);
+            lblPicInfo.Location = new Point(picRotate180.Location.X + 20, picRotate180.Location.Y-20);
         }
 
         private void picRotate180_MouseLeave(object sender, EventArgs e)
@@ -965,7 +966,7 @@ namespace Floating_Controller
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Rotate 90 Degree";
             // Move lblPicInfo to the right by 20 pixels
-            lblPicInfo.Location = new Point(picRotate90.Location.X + 20, picRotate90.Location.Y);
+            lblPicInfo.Location = new Point(picRotate90.Location.X + 20, picRotate90.Location.Y-20);
         }
 
         private void picRotate90_MouseLeave(object sender, EventArgs e)
@@ -978,7 +979,7 @@ namespace Floating_Controller
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Default";
             // Move lblPicInfo to the right by 20 pixels
-            lblPicInfo.Location = new Point(picRotate.Location.X + 20, picRotate.Location.Y);
+            lblPicInfo.Location = new Point(picRotate.Location.X + 20, picRotate.Location.Y-20);
         }
 
         private void picRotate_MouseLeave(object sender, EventArgs e)
@@ -991,7 +992,7 @@ namespace Floating_Controller
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Reset Rotate";
             // Move lblPicInfo to the right by 20 pixels
-            lblPicInfo.Location = new Point(picRotateReset.Location.X + 20, picRotateReset.Location.Y);
+            lblPicInfo.Location = new Point(picRotateReset.Location.X + 20, picRotateReset.Location.Y-20);
         }
 
         private void picRotateReset_MouseLeave(object sender, EventArgs e)
@@ -1004,7 +1005,7 @@ namespace Floating_Controller
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Default";
             // Move lblPicInfo to the right by 20 pixels
-            lblPicInfo.Location = new Point(picAlwaysOnOFF.Location.X + 20, picAlwaysOnOFF.Location.Y);
+            lblPicInfo.Location = new Point(picAlwaysOnOFF.Location.X + 20, picAlwaysOnOFF.Location.Y-20);
         }
 
         private void picAlwaysOnOFF_MouseLeave(object sender, EventArgs e)
@@ -1017,7 +1018,7 @@ namespace Floating_Controller
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Always On Screen";
             // Move lblPicInfo to the right by 20 pixels
-            lblPicInfo.Location = new Point(picAlwaysOn.Location.X + 20, picAlwaysOn.Location.Y);
+            lblPicInfo.Location = new Point(picAlwaysOn.Location.X + 20, picAlwaysOn.Location.Y-20);
         }
 
         private void picAlwaysOn_MouseLeave(object sender, EventArgs e)
@@ -1030,7 +1031,7 @@ namespace Floating_Controller
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Keyboard On Screen";
             // Move lblPicInfo to the right by 20 pixels
-            lblPicInfo.Location = new Point(picKeyboardOnScreen.Location.X + 5, picKeyboardOnScreen.Location.Y);
+            lblPicInfo.Location = new Point(picKeyboardOnScreen.Location.X + 5, picKeyboardOnScreen.Location.Y-20);
         }
 
         private void picKeyboardOnScreen_MouseLeave(object sender, EventArgs e)
@@ -1043,7 +1044,7 @@ namespace Floating_Controller
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "God Mode Folder";
             // Move lblPicInfo to the right by 20 pixels
-            lblPicInfo.Location = new Point(picGodModeFolder.Location.X - 50, picGodModeFolder.Location.Y);
+            lblPicInfo.Location = new Point(picGodModeFolder.Location.X - 50, picGodModeFolder.Location.Y+40);
         }
 
         private void picGodModeFolder_MouseLeave(object sender, EventArgs e)
@@ -1056,7 +1057,7 @@ namespace Floating_Controller
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Show Emoji Keyboard";
             // Move lblPicInfo to the right by 20 pixels
-            lblPicInfo.Location = new Point(picEmojiKeyboard.Location.X - 70, picEmojiKeyboard.Location.Y);
+            lblPicInfo.Location = new Point(picEmojiKeyboard.Location.X - 70, picEmojiKeyboard.Location.Y-20);
         }
 
         private void picEmojiKeyboard_MouseLeave(object sender, EventArgs e)
@@ -1069,7 +1070,7 @@ namespace Floating_Controller
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Disable Sticky Keys";
             // Move lblPicInfo to the right by 20 pixels
-            lblPicInfo.Location = new Point(picDisableStickyKeys.Location.X - 50, picDisableStickyKeys.Location.Y);
+            lblPicInfo.Location = new Point(picDisableStickyKeys.Location.X - 50, picDisableStickyKeys.Location.Y-20);
         }
 
         private void picDisableStickyKeys_MouseLeave(object sender, EventArgs e)
@@ -1082,7 +1083,7 @@ namespace Floating_Controller
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Show Clipboard History";
             // Move lblPicInfo to the right by 20 pixels
-            lblPicInfo.Location = new Point(picClipboardHistory.Location.X - 75, picClipboardHistory.Location.Y);
+            lblPicInfo.Location = new Point(picClipboardHistory.Location.X - 75, picClipboardHistory.Location.Y-20);
         }
 
         private void picClipboardHistory_MouseLeave(object sender, EventArgs e)
@@ -1223,6 +1224,45 @@ namespace Floating_Controller
             picMaxFPSDisable.Visible = false;
             picMaxFPS.Visible = true;
             ToastHelper.ToastShow("SUCCESS", "Driver has been enabled successfully.");
+        }
+
+        private void picMaxFPS_MouseHover(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = true;
+            lblPicInfo.Text = "Enable Maximum FPS";
+            // Move lblPicInfo to the right by 20 pixels
+            lblPicInfo.Location = new Point(picMaxFPS.Location.X - 75, picMaxFPS.Location.Y-20);
+        }
+
+        private void picMaxFPS_MouseLeave(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = false;
+        }
+
+        private void picMaxFPSDisable_MouseHover(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = true;
+            lblPicInfo.Text = "Disable Maximum FPS";
+            // Move lblPicInfo to the right by 20 pixels
+            lblPicInfo.Location = new Point(picMaxFPSDisable.Location.X - 75, picMaxFPSDisable.Location.Y-20);
+        }
+
+        private void picMaxFPSDisable_MouseLeave(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = false;
+        }
+
+        private void picRemoveActivateWindowWaterMark_MouseHover(object sender, EventArgs e)
+        {
+            bunifuLabel1.Visible = true;
+            bunifuLabel1.Text = "Remove Activate Window WaterMark";
+            // Move lblPicInfo to the right by 20 pixels
+            //bunifuLabel1.Location = new Point(picRemoveActivateWindowWaterMark.Location.X - 65, picRemoveActivateWindowWaterMark.Location.Y);
+        }
+
+        private void picRemoveActivateWindowWaterMark_MouseLeave(object sender, EventArgs e)
+        {
+            bunifuLabel1.Visible = false;
         }
     }
 }

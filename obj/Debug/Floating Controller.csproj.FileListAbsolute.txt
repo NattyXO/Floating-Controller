@@ -76,3 +76,5 @@ C:\Users\NattyXO\source\repos\Floating Controller\obj\Debug\Floating Controller.
 C:\Users\NattyXO\source\repos\Floating Controller\obj\Debug\Floating_Controller.Menu.resources
 C:\Users\NattyXO\source\repos\Floating Controller\obj\Debug\Floating_Controller.TaostNotification.resources
 C:\Users\NattyXO\source\repos\Floating Controller\obj\Debug\Floating Controller.csproj.AssemblyReference.cache
+C:\Users\NattyXO\source\repos\Floating Controller\obj\Debug\Interop.IWshRuntimeLibrary.dll
+C:\Users\NattyXO\source\repos\Floating Controller\obj\Debug\Floating Controller.csproj.ResolveComReference.cache

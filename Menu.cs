@@ -6,6 +6,9 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
+using IWshRuntimeLibrary;
+using System.Reflection;
+using System.Diagnostics;
 
 namespace Floating_Controller
 {
@@ -27,6 +30,7 @@ namespace Floating_Controller
             picRotate270.Visible = false;
             picAlwaysOnOFF.Visible = false;
             picDisableStickyKeysEnable.Visible = false;
+            lblPicInfo.Visible = false;
             timer1.Interval = 15000; // Set the interval to 15 seconds (adjust as needed)
             timer1.Tick += PicAlwaysOnTimer_Tick;
             timer1.Start();
@@ -915,6 +919,230 @@ namespace Floating_Controller
                 // Handle any exceptions that might occur
                 ToastHelper.ToastShow("ERROR", $"Error enabling User Account Control: {ex.Message}");
             }
+        }
+
+        private void picScreenShot_MouseHover(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = true;
+            lblPicInfo.Text = "Full ScreenShot";
+            // Move lblPicInfo to the right by 20 pixels
+            lblPicInfo.Location = new Point(picScreenShot.Location.X + 30, picScreenShot.Location.Y);
+        }
+
+        private void picScreenShot_MouseLeave(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = false;
+        }
+
+        private void picRotate270_MouseHover(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = true;
+            lblPicInfo.Text = "Rotate 270 Degree";
+            // Move lblPicInfo to the right by 20 pixels
+            lblPicInfo.Location = new Point(picRotate270.Location.X + 20, picRotate270.Location.Y);
+        }
+
+        private void picRotate270_MouseLeave(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = false;
+        }
+
+        private void picRotate180_MouseHover(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = true;
+            lblPicInfo.Text = "Rotate 180 Degree";
+            // Move lblPicInfo to the right by 20 pixels
+            lblPicInfo.Location = new Point(picRotate180.Location.X + 20, picRotate180.Location.Y);
+        }
+
+        private void picRotate180_MouseLeave(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = false;
+        }
+
+        private void picRotate90_MouseHover(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = true;
+            lblPicInfo.Text = "Rotate 90 Degree";
+            // Move lblPicInfo to the right by 20 pixels
+            lblPicInfo.Location = new Point(picRotate90.Location.X + 20, picRotate90.Location.Y);
+        }
+
+        private void picRotate90_MouseLeave(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = false;
+        }
+
+        private void picRotate_MouseHover(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = true;
+            lblPicInfo.Text = "Default";
+            // Move lblPicInfo to the right by 20 pixels
+            lblPicInfo.Location = new Point(picRotate.Location.X + 20, picRotate.Location.Y);
+        }
+
+        private void picRotate_MouseLeave(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = false;
+        }
+
+        private void picRotateReset_MouseHover(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = true;
+            lblPicInfo.Text = "Reset Rotate";
+            // Move lblPicInfo to the right by 20 pixels
+            lblPicInfo.Location = new Point(picRotateReset.Location.X + 20, picRotateReset.Location.Y);
+        }
+
+        private void picRotateReset_MouseLeave(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = false;
+        }
+
+        private void picAlwaysOnOFF_MouseHover(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = true;
+            lblPicInfo.Text = "Default";
+            // Move lblPicInfo to the right by 20 pixels
+            lblPicInfo.Location = new Point(picAlwaysOnOFF.Location.X + 20, picAlwaysOnOFF.Location.Y);
+        }
+
+        private void picAlwaysOnOFF_MouseLeave(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = false;
+        }
+
+        private void picAlwaysOn_MouseHover(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = true;
+            lblPicInfo.Text = "Always On Screen";
+            // Move lblPicInfo to the right by 20 pixels
+            lblPicInfo.Location = new Point(picAlwaysOn.Location.X + 20, picAlwaysOn.Location.Y);
+        }
+
+        private void picAlwaysOn_MouseLeave(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = false;
+        }
+
+        private void picKeyboardOnScreen_MouseHover(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = true;
+            lblPicInfo.Text = "Keyboard On Screen";
+            // Move lblPicInfo to the right by 20 pixels
+            lblPicInfo.Location = new Point(picKeyboardOnScreen.Location.X + 5, picKeyboardOnScreen.Location.Y);
+        }
+
+        private void picKeyboardOnScreen_MouseLeave(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = false;
+        }
+
+        private void picGodModeFolder_MouseHover(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = true;
+            lblPicInfo.Text = "God Mode Folder";
+            // Move lblPicInfo to the right by 20 pixels
+            lblPicInfo.Location = new Point(picGodModeFolder.Location.X - 50, picGodModeFolder.Location.Y);
+        }
+
+        private void picGodModeFolder_MouseLeave(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = false;
+        }
+
+        private void picEmojiKeyboard_MouseHover(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = true;
+            lblPicInfo.Text = "Show Emoji Keyboard";
+            // Move lblPicInfo to the right by 20 pixels
+            lblPicInfo.Location = new Point(picEmojiKeyboard.Location.X - 70, picEmojiKeyboard.Location.Y);
+        }
+
+        private void picEmojiKeyboard_MouseLeave(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = false;
+        }
+
+        private void picDisableStickyKeys_MouseHover(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = true;
+            lblPicInfo.Text = "Disable Sticky Keys";
+            // Move lblPicInfo to the right by 20 pixels
+            lblPicInfo.Location = new Point(picDisableStickyKeys.Location.X - 50, picDisableStickyKeys.Location.Y);
+        }
+
+        private void picDisableStickyKeys_MouseLeave(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = false;
+        }
+
+        private void picClipboardHistory_MouseHover(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = true;
+            lblPicInfo.Text = "Show Clipboard History";
+            // Move lblPicInfo to the right by 20 pixels
+            lblPicInfo.Location = new Point(picClipboardHistory.Location.X - 75, picClipboardHistory.Location.Y);
+        }
+
+        private void picClipboardHistory_MouseLeave(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = false;
+        }
+        public const int MAX_PATH = 260;
+
+        public enum ShowCommand
+        {
+            SW_SHOWNORMAL = 1,
+            SW_SHOWMAXIMIZED = 3
+        }
+
+
+        private void picBIOSSetting_Click(object sender, EventArgs e)
+        {
+            CreateShortcutOnDesktop("Enter BIOS", @"C:\Windows\System32\shutdown.exe /r /fw /t 00", true);
+        }
+
+        public static void CreateShortcutOnDesktop(string shortcutName, string targetPath, bool runAsAdministrator)
+        {
+            try
+            {
+                // Get the desktop path
+                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+                string shortcutLocation = Path.Combine(desktopPath, $"{shortcutName}.lnk");
+                WshShell shell = new WshShell();
+                IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutLocation);
+
+                shortcut.Description = "Enter BIOS";   // The description of the shortcut
+                shortcut.TargetPath = "C:\\Windows\\System32\\cmd.exe"; // Use cmd.exe as the target to run the command
+                shortcut.Arguments = $"/c {targetPath}"; // Pass the command as an argument to cmd.exe
+                shortcut.Save();
+
+                // Set the run as administrator flag
+                if (runAsAdministrator)
+                {
+                    ProcessStartInfo psi = new ProcessStartInfo(shortcutLocation);
+                    psi.Verb = "runas";
+                    psi.UseShellExecute = true; // Use the default shell for opening the shortcut
+                    Process.Start(psi);
+                }
+
+                Console.WriteLine("Shortcut created on the desktop.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+        }
+        private void picMaxFPS_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void picRemoveActivateWindowWaterMark_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

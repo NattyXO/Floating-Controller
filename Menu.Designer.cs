@@ -37,15 +37,14 @@ namespace Floating_Controller
             this.picRotate270 = new System.Windows.Forms.PictureBox();
             this.picRotate180 = new System.Windows.Forms.PictureBox();
             this.picRotate90 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.picBIOSSetting = new System.Windows.Forms.PictureBox();
             this.picDisableUserAccountControl = new System.Windows.Forms.PictureBox();
-            this.picRefreshRateMax = new System.Windows.Forms.PictureBox();
+            this.picMaxFPS = new System.Windows.Forms.PictureBox();
             this.picClipboardHistory = new System.Windows.Forms.PictureBox();
             this.picDisableStickyKeys = new System.Windows.Forms.PictureBox();
             this.picEmojiKeyboard = new System.Windows.Forms.PictureBox();
             this.picGodModeFolder = new System.Windows.Forms.PictureBox();
             this.picKeyboardOnScreen = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.picAlwaysOn = new System.Windows.Forms.PictureBox();
             this.picRotateReset = new System.Windows.Forms.PictureBox();
@@ -53,26 +52,28 @@ namespace Floating_Controller
             this.picScreenShot = new System.Windows.Forms.PictureBox();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lblPicInfo = new Bunifu.UI.WinForms.BunifuLabel();
+            this.picRemoveActivateWindowWaterMark = new System.Windows.Forms.PictureBox();
             this.bunifuGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picDisableStickyKeysEnable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAlwaysOnOFF)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotate270)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotate180)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotate90)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBIOSSetting)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDisableUserAccountControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picRefreshRateMax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMaxFPS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picClipboardHistory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDisableStickyKeys)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEmojiKeyboard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGodModeFolder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picKeyboardOnScreen)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAlwaysOn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotateReset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picScreenShot)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRemoveActivateWindowWaterMark)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuGradientPanel1
@@ -81,20 +82,21 @@ namespace Floating_Controller
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuGradientPanel1.BorderRadius = 1;
+            this.bunifuGradientPanel1.Controls.Add(this.picRemoveActivateWindowWaterMark);
+            this.bunifuGradientPanel1.Controls.Add(this.lblPicInfo);
             this.bunifuGradientPanel1.Controls.Add(this.picDisableStickyKeysEnable);
             this.bunifuGradientPanel1.Controls.Add(this.picAlwaysOnOFF);
             this.bunifuGradientPanel1.Controls.Add(this.picRotate270);
             this.bunifuGradientPanel1.Controls.Add(this.picRotate180);
             this.bunifuGradientPanel1.Controls.Add(this.picRotate90);
-            this.bunifuGradientPanel1.Controls.Add(this.pictureBox5);
+            this.bunifuGradientPanel1.Controls.Add(this.picBIOSSetting);
             this.bunifuGradientPanel1.Controls.Add(this.picDisableUserAccountControl);
-            this.bunifuGradientPanel1.Controls.Add(this.picRefreshRateMax);
+            this.bunifuGradientPanel1.Controls.Add(this.picMaxFPS);
             this.bunifuGradientPanel1.Controls.Add(this.picClipboardHistory);
             this.bunifuGradientPanel1.Controls.Add(this.picDisableStickyKeys);
             this.bunifuGradientPanel1.Controls.Add(this.picEmojiKeyboard);
             this.bunifuGradientPanel1.Controls.Add(this.picGodModeFolder);
             this.bunifuGradientPanel1.Controls.Add(this.picKeyboardOnScreen);
-            this.bunifuGradientPanel1.Controls.Add(this.pictureBox7);
             this.bunifuGradientPanel1.Controls.Add(this.pictureBox8);
             this.bunifuGradientPanel1.Controls.Add(this.picAlwaysOn);
             this.bunifuGradientPanel1.Controls.Add(this.picRotateReset);
@@ -133,49 +135,58 @@ namespace Floating_Controller
             this.picAlwaysOnOFF.TabIndex = 17;
             this.picAlwaysOnOFF.TabStop = false;
             this.picAlwaysOnOFF.Click += new System.EventHandler(this.picAlwaysOnOFF_Click);
+            this.picAlwaysOnOFF.MouseLeave += new System.EventHandler(this.picAlwaysOnOFF_MouseLeave);
+            this.picAlwaysOnOFF.MouseHover += new System.EventHandler(this.picAlwaysOnOFF_MouseHover);
             // 
             // picRotate270
             // 
             this.picRotate270.Image = ((System.Drawing.Image)(resources.GetObject("picRotate270.Image")));
-            this.picRotate270.Location = new System.Drawing.Point(18, 55);
+            this.picRotate270.Location = new System.Drawing.Point(18, 57);
             this.picRotate270.Name = "picRotate270";
             this.picRotate270.Size = new System.Drawing.Size(40, 40);
             this.picRotate270.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picRotate270.TabIndex = 16;
             this.picRotate270.TabStop = false;
             this.picRotate270.Click += new System.EventHandler(this.picRotate270_Click);
+            this.picRotate270.MouseLeave += new System.EventHandler(this.picRotate270_MouseLeave);
+            this.picRotate270.MouseHover += new System.EventHandler(this.picRotate270_MouseHover);
             // 
             // picRotate180
             // 
             this.picRotate180.Image = ((System.Drawing.Image)(resources.GetObject("picRotate180.Image")));
-            this.picRotate180.Location = new System.Drawing.Point(18, 55);
+            this.picRotate180.Location = new System.Drawing.Point(18, 57);
             this.picRotate180.Name = "picRotate180";
             this.picRotate180.Size = new System.Drawing.Size(40, 40);
             this.picRotate180.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picRotate180.TabIndex = 15;
             this.picRotate180.TabStop = false;
             this.picRotate180.Click += new System.EventHandler(this.picRotate180_Click);
+            this.picRotate180.MouseLeave += new System.EventHandler(this.picRotate180_MouseLeave);
+            this.picRotate180.MouseHover += new System.EventHandler(this.picRotate180_MouseHover);
             // 
             // picRotate90
             // 
             this.picRotate90.Image = ((System.Drawing.Image)(resources.GetObject("picRotate90.Image")));
-            this.picRotate90.Location = new System.Drawing.Point(18, 55);
+            this.picRotate90.Location = new System.Drawing.Point(18, 57);
             this.picRotate90.Name = "picRotate90";
             this.picRotate90.Size = new System.Drawing.Size(40, 40);
             this.picRotate90.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picRotate90.TabIndex = 14;
             this.picRotate90.TabStop = false;
             this.picRotate90.Click += new System.EventHandler(this.picRotate90_Click);
+            this.picRotate90.MouseLeave += new System.EventHandler(this.picRotate90_MouseLeave);
+            this.picRotate90.MouseHover += new System.EventHandler(this.picRotate90_MouseHover);
             // 
-            // pictureBox5
+            // picBIOSSetting
             // 
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(79, 297);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 13;
-            this.pictureBox5.TabStop = false;
+            this.picBIOSSetting.Image = ((System.Drawing.Image)(resources.GetObject("picBIOSSetting.Image")));
+            this.picBIOSSetting.Location = new System.Drawing.Point(79, 297);
+            this.picBIOSSetting.Name = "picBIOSSetting";
+            this.picBIOSSetting.Size = new System.Drawing.Size(40, 40);
+            this.picBIOSSetting.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBIOSSetting.TabIndex = 13;
+            this.picBIOSSetting.TabStop = false;
+            this.picBIOSSetting.Click += new System.EventHandler(this.picBIOSSetting_Click);
             // 
             // picDisableUserAccountControl
             // 
@@ -188,16 +199,16 @@ namespace Floating_Controller
             this.picDisableUserAccountControl.TabStop = false;
             this.picDisableUserAccountControl.Click += new System.EventHandler(this.picDisableUserAccountControl_Click);
             // 
-            // picRefreshRateMax
+            // picMaxFPS
             // 
-            this.picRefreshRateMax.Image = ((System.Drawing.Image)(resources.GetObject("picRefreshRateMax.Image")));
-            this.picRefreshRateMax.Location = new System.Drawing.Point(79, 201);
-            this.picRefreshRateMax.Name = "picRefreshRateMax";
-            this.picRefreshRateMax.Size = new System.Drawing.Size(40, 40);
-            this.picRefreshRateMax.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picRefreshRateMax.TabIndex = 11;
-            this.picRefreshRateMax.TabStop = false;
-            this.picRefreshRateMax.Click += new System.EventHandler(this.picRefreshRateMax_Click);
+            this.picMaxFPS.Image = ((System.Drawing.Image)(resources.GetObject("picMaxFPS.Image")));
+            this.picMaxFPS.Location = new System.Drawing.Point(79, 201);
+            this.picMaxFPS.Name = "picMaxFPS";
+            this.picMaxFPS.Size = new System.Drawing.Size(40, 40);
+            this.picMaxFPS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picMaxFPS.TabIndex = 11;
+            this.picMaxFPS.TabStop = false;
+            this.picMaxFPS.Click += new System.EventHandler(this.picMaxFPS_Click);
             // 
             // picClipboardHistory
             // 
@@ -209,6 +220,8 @@ namespace Floating_Controller
             this.picClipboardHistory.TabIndex = 10;
             this.picClipboardHistory.TabStop = false;
             this.picClipboardHistory.Click += new System.EventHandler(this.picClipboardHistory_Click);
+            this.picClipboardHistory.MouseLeave += new System.EventHandler(this.picClipboardHistory_MouseLeave);
+            this.picClipboardHistory.MouseHover += new System.EventHandler(this.picClipboardHistory_MouseHover);
             // 
             // picDisableStickyKeys
             // 
@@ -220,6 +233,8 @@ namespace Floating_Controller
             this.picDisableStickyKeys.TabIndex = 9;
             this.picDisableStickyKeys.TabStop = false;
             this.picDisableStickyKeys.Click += new System.EventHandler(this.picDisableStickyKeys_Click);
+            this.picDisableStickyKeys.MouseLeave += new System.EventHandler(this.picDisableStickyKeys_MouseLeave);
+            this.picDisableStickyKeys.MouseHover += new System.EventHandler(this.picDisableStickyKeys_MouseHover);
             // 
             // picEmojiKeyboard
             // 
@@ -231,6 +246,8 @@ namespace Floating_Controller
             this.picEmojiKeyboard.TabIndex = 8;
             this.picEmojiKeyboard.TabStop = false;
             this.picEmojiKeyboard.Click += new System.EventHandler(this.picEmojiKeyboard_Click);
+            this.picEmojiKeyboard.MouseLeave += new System.EventHandler(this.picEmojiKeyboard_MouseLeave);
+            this.picEmojiKeyboard.MouseHover += new System.EventHandler(this.picEmojiKeyboard_MouseHover);
             // 
             // picGodModeFolder
             // 
@@ -242,6 +259,8 @@ namespace Floating_Controller
             this.picGodModeFolder.TabIndex = 7;
             this.picGodModeFolder.TabStop = false;
             this.picGodModeFolder.Click += new System.EventHandler(this.picGodModeFolder_Click);
+            this.picGodModeFolder.MouseLeave += new System.EventHandler(this.picGodModeFolder_MouseLeave);
+            this.picGodModeFolder.MouseHover += new System.EventHandler(this.picGodModeFolder_MouseHover);
             // 
             // picKeyboardOnScreen
             // 
@@ -253,16 +272,8 @@ namespace Floating_Controller
             this.picKeyboardOnScreen.TabIndex = 6;
             this.picKeyboardOnScreen.TabStop = false;
             this.picKeyboardOnScreen.Click += new System.EventHandler(this.picKeyboardOnScreen_Click);
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(18, 249);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox7.TabIndex = 5;
-            this.pictureBox7.TabStop = false;
+            this.picKeyboardOnScreen.MouseLeave += new System.EventHandler(this.picKeyboardOnScreen_MouseLeave);
+            this.picKeyboardOnScreen.MouseHover += new System.EventHandler(this.picKeyboardOnScreen_MouseHover);
             // 
             // pictureBox8
             // 
@@ -284,6 +295,8 @@ namespace Floating_Controller
             this.picAlwaysOn.TabIndex = 3;
             this.picAlwaysOn.TabStop = false;
             this.picAlwaysOn.Click += new System.EventHandler(this.picAlwaysOn_Click);
+            this.picAlwaysOn.MouseLeave += new System.EventHandler(this.picAlwaysOn_MouseLeave);
+            this.picAlwaysOn.MouseHover += new System.EventHandler(this.picAlwaysOn_MouseHover);
             // 
             // picRotateReset
             // 
@@ -295,17 +308,21 @@ namespace Floating_Controller
             this.picRotateReset.TabIndex = 2;
             this.picRotateReset.TabStop = false;
             this.picRotateReset.Click += new System.EventHandler(this.picRotateReset_Click);
+            this.picRotateReset.MouseLeave += new System.EventHandler(this.picRotateReset_MouseLeave);
+            this.picRotateReset.MouseHover += new System.EventHandler(this.picRotateReset_MouseHover);
             // 
             // picRotate
             // 
             this.picRotate.Image = ((System.Drawing.Image)(resources.GetObject("picRotate.Image")));
-            this.picRotate.Location = new System.Drawing.Point(18, 55);
+            this.picRotate.Location = new System.Drawing.Point(18, 57);
             this.picRotate.Name = "picRotate";
             this.picRotate.Size = new System.Drawing.Size(40, 40);
             this.picRotate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picRotate.TabIndex = 1;
             this.picRotate.TabStop = false;
             this.picRotate.Click += new System.EventHandler(this.picRotate_Click);
+            this.picRotate.MouseLeave += new System.EventHandler(this.picRotate_MouseLeave);
+            this.picRotate.MouseHover += new System.EventHandler(this.picRotate_MouseHover);
             // 
             // picScreenShot
             // 
@@ -317,11 +334,40 @@ namespace Floating_Controller
             this.picScreenShot.TabIndex = 0;
             this.picScreenShot.TabStop = false;
             this.picScreenShot.Click += new System.EventHandler(this.picScreenShot_Click);
+            this.picScreenShot.MouseLeave += new System.EventHandler(this.picScreenShot_MouseLeave);
+            this.picScreenShot.MouseHover += new System.EventHandler(this.picScreenShot_MouseHover);
             // 
             // bunifuElipse1
             // 
             this.bunifuElipse1.ElipseRadius = 20;
             this.bunifuElipse1.TargetControl = this;
+            // 
+            // lblPicInfo
+            // 
+            this.lblPicInfo.AllowParentOverrides = false;
+            this.lblPicInfo.AutoEllipsis = false;
+            this.lblPicInfo.BackColor = System.Drawing.Color.White;
+            this.lblPicInfo.CursorType = System.Windows.Forms.Cursors.Default;
+            this.lblPicInfo.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblPicInfo.Location = new System.Drawing.Point(18, 105);
+            this.lblPicInfo.Name = "lblPicInfo";
+            this.lblPicInfo.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblPicInfo.Size = new System.Drawing.Size(69, 15);
+            this.lblPicInfo.TabIndex = 19;
+            this.lblPicInfo.Text = "bunifuLabel1";
+            this.lblPicInfo.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.lblPicInfo.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // picRemoveActivateWindowWaterMark
+            // 
+            this.picRemoveActivateWindowWaterMark.Image = ((System.Drawing.Image)(resources.GetObject("picRemoveActivateWindowWaterMark.Image")));
+            this.picRemoveActivateWindowWaterMark.Location = new System.Drawing.Point(18, 249);
+            this.picRemoveActivateWindowWaterMark.Name = "picRemoveActivateWindowWaterMark";
+            this.picRemoveActivateWindowWaterMark.Size = new System.Drawing.Size(40, 40);
+            this.picRemoveActivateWindowWaterMark.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picRemoveActivateWindowWaterMark.TabIndex = 20;
+            this.picRemoveActivateWindowWaterMark.TabStop = false;
+            this.picRemoveActivateWindowWaterMark.Click += new System.EventHandler(this.picRemoveActivateWindowWaterMark_Click);
             // 
             // Menu
             // 
@@ -342,25 +388,26 @@ namespace Floating_Controller
             this.TopMost = true;
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Menu_KeyDown);
             this.bunifuGradientPanel1.ResumeLayout(false);
+            this.bunifuGradientPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picDisableStickyKeysEnable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAlwaysOnOFF)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotate270)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotate180)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotate90)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBIOSSetting)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDisableUserAccountControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picRefreshRateMax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMaxFPS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picClipboardHistory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDisableStickyKeys)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEmojiKeyboard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGodModeFolder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picKeyboardOnScreen)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAlwaysOn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotateReset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picScreenShot)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRemoveActivateWindowWaterMark)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -369,15 +416,14 @@ namespace Floating_Controller
 
         private Bunifu.UI.WinForms.BunifuGradientPanel bunifuGradientPanel1;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
-        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox picBIOSSetting;
         private System.Windows.Forms.PictureBox picDisableUserAccountControl;
-        private System.Windows.Forms.PictureBox picRefreshRateMax;
+        private System.Windows.Forms.PictureBox picMaxFPS;
         private System.Windows.Forms.PictureBox picClipboardHistory;
         private System.Windows.Forms.PictureBox picDisableStickyKeys;
         private System.Windows.Forms.PictureBox picEmojiKeyboard;
         private System.Windows.Forms.PictureBox picGodModeFolder;
         private System.Windows.Forms.PictureBox picKeyboardOnScreen;
-        private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.PictureBox picAlwaysOn;
         private System.Windows.Forms.PictureBox picRotateReset;
@@ -389,5 +435,7 @@ namespace Floating_Controller
         private System.Windows.Forms.PictureBox picAlwaysOnOFF;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox picDisableStickyKeysEnable;
+        private Bunifu.UI.WinForms.BunifuLabel lblPicInfo;
+        private System.Windows.Forms.PictureBox picRemoveActivateWindowWaterMark;
     }
 }

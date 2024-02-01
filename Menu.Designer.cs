@@ -54,6 +54,7 @@ namespace Floating_Controller
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblPicInfo = new Bunifu.UI.WinForms.BunifuLabel();
             this.picRemoveActivateWindowWaterMark = new System.Windows.Forms.PictureBox();
+            this.picMaxFPSDisable = new System.Windows.Forms.PictureBox();
             this.bunifuGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picDisableStickyKeysEnable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAlwaysOnOFF)).BeginInit();
@@ -74,6 +75,7 @@ namespace Floating_Controller
             ((System.ComponentModel.ISupportInitialize)(this.picRotate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picScreenShot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRemoveActivateWindowWaterMark)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMaxFPSDisable)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuGradientPanel1
@@ -82,6 +84,7 @@ namespace Floating_Controller
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuGradientPanel1.BorderRadius = 1;
+            this.bunifuGradientPanel1.Controls.Add(this.picMaxFPSDisable);
             this.bunifuGradientPanel1.Controls.Add(this.picRemoveActivateWindowWaterMark);
             this.bunifuGradientPanel1.Controls.Add(this.lblPicInfo);
             this.bunifuGradientPanel1.Controls.Add(this.picDisableStickyKeysEnable);
@@ -369,6 +372,17 @@ namespace Floating_Controller
             this.picRemoveActivateWindowWaterMark.TabStop = false;
             this.picRemoveActivateWindowWaterMark.Click += new System.EventHandler(this.picRemoveActivateWindowWaterMark_Click);
             // 
+            // picMaxFPSDisable
+            // 
+            this.picMaxFPSDisable.Image = ((System.Drawing.Image)(resources.GetObject("picMaxFPSDisable.Image")));
+            this.picMaxFPSDisable.Location = new System.Drawing.Point(79, 201);
+            this.picMaxFPSDisable.Name = "picMaxFPSDisable";
+            this.picMaxFPSDisable.Size = new System.Drawing.Size(40, 40);
+            this.picMaxFPSDisable.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picMaxFPSDisable.TabIndex = 21;
+            this.picMaxFPSDisable.TabStop = false;
+            this.picMaxFPSDisable.Click += new System.EventHandler(this.picMaxFPSDisable_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -408,6 +422,7 @@ namespace Floating_Controller
             ((System.ComponentModel.ISupportInitialize)(this.picRotate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picScreenShot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRemoveActivateWindowWaterMark)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMaxFPSDisable)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -437,5 +452,6 @@ namespace Floating_Controller
         private System.Windows.Forms.PictureBox picDisableStickyKeysEnable;
         private Bunifu.UI.WinForms.BunifuLabel lblPicInfo;
         private System.Windows.Forms.PictureBox picRemoveActivateWindowWaterMark;
+        private System.Windows.Forms.PictureBox picMaxFPSDisable;
     }
 }

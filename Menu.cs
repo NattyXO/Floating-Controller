@@ -1,14 +1,13 @@
-﻿using Microsoft.Win32;
+﻿using IWshRuntimeLibrary;
+using Microsoft.Win32;
 using System;
 using System.Configuration;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
-using IWshRuntimeLibrary;
-using System.Reflection;
-using System.Diagnostics;
 
 namespace Floating_Controller
 {
@@ -31,6 +30,7 @@ namespace Floating_Controller
             picAlwaysOnOFF.Visible = false;
             picDisableStickyKeysEnable.Visible = false;
             lblPicInfo.Visible = false;
+            picMaxFPSDisable.Visible = false;
             timer1.Interval = 15000; // Set the interval to 15 seconds (adjust as needed)
             timer1.Tick += PicAlwaysOnTimer_Tick;
             timer1.Start();
@@ -55,7 +55,7 @@ namespace Floating_Controller
 
         // Retrieve the current user's username
         string currentUsername = Environment.UserName;
-        
+
         private void picScreenShot_Click(object sender, EventArgs e)
         {
             // Call picExpandClose_Click with appropriate parameters
@@ -795,7 +795,7 @@ namespace Floating_Controller
                 picDisableStickyKeysEnable.Visible = false;
                 ToastHelper.ToastShow("INFO", "Go to Setting and enable it.");
             }
-            
+
         }
 
         public static bool DisableStickyKeys()
@@ -1137,12 +1137,92 @@ namespace Floating_Controller
         }
         private void picMaxFPS_Click(object sender, EventArgs e)
         {
+            // Replace the instance ID with the actual instance ID of the device you want to disable
+            string instanceId = "ACPI\\PNP0103\\0";
 
+            // Disable the device using PowerShell
+            DisableDevice(instanceId);
+            picMaxFPSDisable.Visible = true;
+            picMaxFPS.Visible = false;
+            ToastHelper.ToastShow("SUCCESS", "Driver has been disabled successfully.");
+
+        }
+        private void DisableDevice(string instanceId)
+        {
+            // PowerShell command to disable the device
+            string powershellCommand = $"Disable-PnpDevice -InstanceId '{instanceId}' -Confirm:$false";
+
+            // Run the PowerShell command
+            RunCommandAsAdminFPS("powershell.exe", powershellCommand);
+        }
+        private void EnableDevice(string instanceId)
+        {
+            // PowerShell command to disable the device
+            string powershellCommand = $"Enable-PnpDevice -InstanceId '{instanceId}' -Confirm:$false";
+
+            // Run the PowerShell command
+            RunCommandAsAdminFPS("powershell.exe", powershellCommand);
+        }
+        private void RunCommandAsAdminFPS(string fileName, string arguments)
+        {
+            // Create a new ProcessStartInfo
+            ProcessStartInfo psi = new ProcessStartInfo
+            {
+                FileName = fileName,
+                Arguments = arguments,
+                Verb = "runas", // Run the process as administrator
+                UseShellExecute = true
+            };
+
+            // Start the process
+            Process.Start(psi);
         }
 
         private void picRemoveActivateWindowWaterMark_Click(object sender, EventArgs e)
         {
+            // Run the command in an elevated Command Prompt
+            RunCommandAsAdmin("bcdedit.exe", "-set TESTSIGNING OFF");
 
+            // Ask the user whether to restart now or later
+            DialogResult result = MessageBox.Show("Changes will take effect after restarting your computer. Do you want to restart now?", "Restart Required", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+            if (result == DialogResult.Yes)
+            {
+                // Restart the computer
+                RunCommandAsAdmin("shutdown", "/r /t 0");
+            }
+            else
+            {
+                // User selected "Restart Later"
+                // Close the dialog box or perform any other desired action
+            }
+        }
+        private void RunCommandAsAdmin(string fileName, string arguments)
+        {
+            // Create a new ProcessStartInfo
+            ProcessStartInfo psi = new ProcessStartInfo
+            {
+                FileName = fileName,
+                Arguments = arguments,
+                Verb = "runas", // Run the process as administrator
+                UseShellExecute = true
+            };
+
+            // Start the process
+            Process.Start(psi);
+            ToastHelper.ToastShow("SUCCESS", "Command Finished.");
+        }
+
+        private void picMaxFPSDisable_Click(object sender, EventArgs e)
+        {
+            // Replace the instance ID with the actual instance ID of the device you want to disable
+            string instanceId = "ACPI\\PNP0103\\0";
+
+            // Disable the device using PowerShell
+            EnableDevice(instanceId);
+            picMaxFPSDisable.Visible = false;
+            picMaxFPS.Visible = true;
+            ToastHelper.ToastShow("SUCCESS", "Driver has been enabled successfully.");
         }
     }
 }

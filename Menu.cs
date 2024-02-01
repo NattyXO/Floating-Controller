@@ -32,10 +32,36 @@ namespace Floating_Controller
             lblPicInfo.Visible = false;
             picMaxFPSDisable.Visible = false;
             bunifuLabel1.Visible = false;
+            picEnableUserAccountControl.Visible = false;
             timer1.Interval = 15000; // Set the interval to 15 seconds (adjust as needed)
             timer1.Tick += PicAlwaysOnTimer_Tick;
             timer1.Start();
+
+            SetRunAsAdminFlag(@"C:\Users\NattyXO\source\repos\Floating Controller\bin\Debug\Floating Controller.exe");
         }
+        static void SetRunAsAdminFlag(string exePath)
+        {
+            try
+            {
+                RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers", true);
+
+                if (key == null)
+                {
+                    key = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers");
+                }
+
+                string registryValue = exePath + " RUNASADMIN";
+                key.SetValue(exePath, registryValue, RegistryValueKind.String);
+                key.Close();
+
+                Console.WriteLine("Run as administrator flag set for: " + exePath);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error setting Run as administrator flag: " + ex.Message);
+            }
+        }
+
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
 
@@ -865,7 +891,9 @@ namespace Floating_Controller
                 }
                 catch (Exception ex)
                 {
+                    
                     ToastHelper.ToastShow("ERROR", $"Error disabling User Account Control: {ex.Message}");
+                    
                 }
             }
 
@@ -881,6 +909,7 @@ namespace Floating_Controller
                 catch (Exception ex)
                 {
                     ToastHelper.ToastShow("ERROR", $"Error enabling User Account Control: {ex.Message}");
+                    
                 }
             }
         }
@@ -888,6 +917,14 @@ namespace Floating_Controller
         private void picDisableUserAccountControl_Click(object sender, EventArgs e)
         {
             Program1.DisableUAC();
+            picEnableUserAccountControl.Visible = true;
+            picDisableUserAccountControl.Visible = false;
+        }
+        private void picEnableUserAccountControl_Click(object sender, EventArgs e)
+        {
+            Program1.EnableUAC();
+            picEnableUserAccountControl.Visible = false;
+            picDisableUserAccountControl.Visible = true;
         }
 
         private void picGodModeFolder_Click(object sender, EventArgs e)
@@ -1261,6 +1298,36 @@ namespace Floating_Controller
         }
 
         private void picRemoveActivateWindowWaterMark_MouseLeave(object sender, EventArgs e)
+        {
+            bunifuLabel1.Visible = false;
+        }
+
+        private void picDisableUserAccountControl_MouseHover(object sender, EventArgs e)
+        {
+
+            bunifuLabel1.Visible = true;
+            bunifuLabel1.Text = "Disable User Account Control";
+            // Move lblPicInfo to the right by 20 pixels
+            //lblPicInfo.Location = new Point(picDisableUserAccountControl.Location.X - 75, picDisableUserAccountControl.Location.Y - 20);
+
+        }
+
+        private void picDisableUserAccountControl_MouseLeave(object sender, EventArgs e)
+        {
+
+            bunifuLabel1.Visible = false;
+        }
+
+        private void picEnableUserAccountControl_MouseHover(object sender, EventArgs e)
+        {
+            bunifuLabel1.Visible = true;
+            bunifuLabel1.Text = "Enable User Account Control";
+            // Move lblPicInfo to the right by 20 pixels
+            //lblPicInfo.Location = new Point(picEnableUserAccountControl.Location.X - 75, picEnableUserAccountControl.Location.Y - 20);
+
+        }
+
+        private void picEnableUserAccountControl_MouseLeave(object sender, EventArgs e)
         {
             bunifuLabel1.Visible = false;
         }

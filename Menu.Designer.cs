@@ -32,6 +32,11 @@ namespace Floating_Controller
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.bunifuGradientPanel1 = new Bunifu.UI.WinForms.BunifuGradientPanel();
+            this.picEnableUserAccountControl = new System.Windows.Forms.PictureBox();
+            this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.lblPicInfo = new Bunifu.UI.WinForms.BunifuLabel();
+            this.picMaxFPSDisable = new System.Windows.Forms.PictureBox();
+            this.picRemoveActivateWindowWaterMark = new System.Windows.Forms.PictureBox();
             this.picDisableStickyKeysEnable = new System.Windows.Forms.PictureBox();
             this.picAlwaysOnOFF = new System.Windows.Forms.PictureBox();
             this.picRotate270 = new System.Windows.Forms.PictureBox();
@@ -52,11 +57,10 @@ namespace Floating_Controller
             this.picScreenShot = new System.Windows.Forms.PictureBox();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.lblPicInfo = new Bunifu.UI.WinForms.BunifuLabel();
-            this.picRemoveActivateWindowWaterMark = new System.Windows.Forms.PictureBox();
-            this.picMaxFPSDisable = new System.Windows.Forms.PictureBox();
-            this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuGradientPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picEnableUserAccountControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMaxFPSDisable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRemoveActivateWindowWaterMark)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDisableStickyKeysEnable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAlwaysOnOFF)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotate270)).BeginInit();
@@ -75,8 +79,6 @@ namespace Floating_Controller
             ((System.ComponentModel.ISupportInitialize)(this.picRotateReset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picScreenShot)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picRemoveActivateWindowWaterMark)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMaxFPSDisable)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuGradientPanel1
@@ -85,6 +87,7 @@ namespace Floating_Controller
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuGradientPanel1.BorderRadius = 1;
+            this.bunifuGradientPanel1.Controls.Add(this.picEnableUserAccountControl);
             this.bunifuGradientPanel1.Controls.Add(this.bunifuLabel1);
             this.bunifuGradientPanel1.Controls.Add(this.lblPicInfo);
             this.bunifuGradientPanel1.Controls.Add(this.picMaxFPSDisable);
@@ -118,6 +121,79 @@ namespace Floating_Controller
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(126, 343);
             this.bunifuGradientPanel1.TabIndex = 0;
             this.bunifuGradientPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bunifuGradientPanel1_MouseDown);
+            // 
+            // picEnableUserAccountControl
+            // 
+            this.picEnableUserAccountControl.Image = ((System.Drawing.Image)(resources.GetObject("picEnableUserAccountControl.Image")));
+            this.picEnableUserAccountControl.Location = new System.Drawing.Point(79, 249);
+            this.picEnableUserAccountControl.Name = "picEnableUserAccountControl";
+            this.picEnableUserAccountControl.Size = new System.Drawing.Size(40, 40);
+            this.picEnableUserAccountControl.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picEnableUserAccountControl.TabIndex = 23;
+            this.picEnableUserAccountControl.TabStop = false;
+            this.picEnableUserAccountControl.Click += new System.EventHandler(this.picEnableUserAccountControl_Click);
+            this.picEnableUserAccountControl.MouseLeave += new System.EventHandler(this.picEnableUserAccountControl_MouseLeave);
+            this.picEnableUserAccountControl.MouseHover += new System.EventHandler(this.picEnableUserAccountControl_MouseHover);
+            // 
+            // bunifuLabel1
+            // 
+            this.bunifuLabel1.AllowParentOverrides = false;
+            this.bunifuLabel1.AutoEllipsis = false;
+            this.bunifuLabel1.AutoSize = false;
+            this.bunifuLabel1.BackColor = System.Drawing.Color.White;
+            this.bunifuLabel1.CursorType = null;
+            this.bunifuLabel1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.bunifuLabel1.Location = new System.Drawing.Point(8, 211);
+            this.bunifuLabel1.Name = "bunifuLabel1";
+            this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel1.Size = new System.Drawing.Size(115, 30);
+            this.bunifuLabel1.TabIndex = 22;
+            this.bunifuLabel1.Text = "bunifuLabel1";
+            this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // lblPicInfo
+            // 
+            this.lblPicInfo.AllowParentOverrides = false;
+            this.lblPicInfo.AutoEllipsis = false;
+            this.lblPicInfo.BackColor = System.Drawing.Color.White;
+            this.lblPicInfo.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblPicInfo.CursorType = System.Windows.Forms.Cursors.Default;
+            this.lblPicInfo.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblPicInfo.Location = new System.Drawing.Point(18, 105);
+            this.lblPicInfo.Name = "lblPicInfo";
+            this.lblPicInfo.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblPicInfo.Size = new System.Drawing.Size(69, 15);
+            this.lblPicInfo.TabIndex = 19;
+            this.lblPicInfo.Text = "bunifuLabel1";
+            this.lblPicInfo.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.lblPicInfo.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // picMaxFPSDisable
+            // 
+            this.picMaxFPSDisable.Image = ((System.Drawing.Image)(resources.GetObject("picMaxFPSDisable.Image")));
+            this.picMaxFPSDisable.Location = new System.Drawing.Point(79, 201);
+            this.picMaxFPSDisable.Name = "picMaxFPSDisable";
+            this.picMaxFPSDisable.Size = new System.Drawing.Size(40, 40);
+            this.picMaxFPSDisable.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picMaxFPSDisable.TabIndex = 21;
+            this.picMaxFPSDisable.TabStop = false;
+            this.picMaxFPSDisable.Click += new System.EventHandler(this.picMaxFPSDisable_Click);
+            this.picMaxFPSDisable.MouseLeave += new System.EventHandler(this.picMaxFPSDisable_MouseLeave);
+            this.picMaxFPSDisable.MouseHover += new System.EventHandler(this.picMaxFPSDisable_MouseHover);
+            // 
+            // picRemoveActivateWindowWaterMark
+            // 
+            this.picRemoveActivateWindowWaterMark.Image = ((System.Drawing.Image)(resources.GetObject("picRemoveActivateWindowWaterMark.Image")));
+            this.picRemoveActivateWindowWaterMark.Location = new System.Drawing.Point(18, 249);
+            this.picRemoveActivateWindowWaterMark.Name = "picRemoveActivateWindowWaterMark";
+            this.picRemoveActivateWindowWaterMark.Size = new System.Drawing.Size(40, 40);
+            this.picRemoveActivateWindowWaterMark.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picRemoveActivateWindowWaterMark.TabIndex = 20;
+            this.picRemoveActivateWindowWaterMark.TabStop = false;
+            this.picRemoveActivateWindowWaterMark.Click += new System.EventHandler(this.picRemoveActivateWindowWaterMark_Click);
+            this.picRemoveActivateWindowWaterMark.MouseLeave += new System.EventHandler(this.picRemoveActivateWindowWaterMark_MouseLeave);
+            this.picRemoveActivateWindowWaterMark.MouseHover += new System.EventHandler(this.picRemoveActivateWindowWaterMark_MouseHover);
             // 
             // picDisableStickyKeysEnable
             // 
@@ -203,6 +279,8 @@ namespace Floating_Controller
             this.picDisableUserAccountControl.TabIndex = 12;
             this.picDisableUserAccountControl.TabStop = false;
             this.picDisableUserAccountControl.Click += new System.EventHandler(this.picDisableUserAccountControl_Click);
+            this.picDisableUserAccountControl.MouseLeave += new System.EventHandler(this.picDisableUserAccountControl_MouseLeave);
+            this.picDisableUserAccountControl.MouseHover += new System.EventHandler(this.picDisableUserAccountControl_MouseHover);
             // 
             // picMaxFPS
             // 
@@ -349,65 +427,6 @@ namespace Floating_Controller
             this.bunifuElipse1.ElipseRadius = 20;
             this.bunifuElipse1.TargetControl = this;
             // 
-            // lblPicInfo
-            // 
-            this.lblPicInfo.AllowParentOverrides = false;
-            this.lblPicInfo.AutoEllipsis = false;
-            this.lblPicInfo.BackColor = System.Drawing.Color.White;
-            this.lblPicInfo.CursorType = System.Windows.Forms.Cursors.Default;
-            this.lblPicInfo.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblPicInfo.Location = new System.Drawing.Point(18, 105);
-            this.lblPicInfo.Name = "lblPicInfo";
-            this.lblPicInfo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblPicInfo.Size = new System.Drawing.Size(69, 15);
-            this.lblPicInfo.TabIndex = 19;
-            this.lblPicInfo.Text = "bunifuLabel1";
-            this.lblPicInfo.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.lblPicInfo.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // picRemoveActivateWindowWaterMark
-            // 
-            this.picRemoveActivateWindowWaterMark.Image = ((System.Drawing.Image)(resources.GetObject("picRemoveActivateWindowWaterMark.Image")));
-            this.picRemoveActivateWindowWaterMark.Location = new System.Drawing.Point(18, 249);
-            this.picRemoveActivateWindowWaterMark.Name = "picRemoveActivateWindowWaterMark";
-            this.picRemoveActivateWindowWaterMark.Size = new System.Drawing.Size(40, 40);
-            this.picRemoveActivateWindowWaterMark.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picRemoveActivateWindowWaterMark.TabIndex = 20;
-            this.picRemoveActivateWindowWaterMark.TabStop = false;
-            this.picRemoveActivateWindowWaterMark.Click += new System.EventHandler(this.picRemoveActivateWindowWaterMark_Click);
-            this.picRemoveActivateWindowWaterMark.MouseLeave += new System.EventHandler(this.picRemoveActivateWindowWaterMark_MouseLeave);
-            this.picRemoveActivateWindowWaterMark.MouseHover += new System.EventHandler(this.picRemoveActivateWindowWaterMark_MouseHover);
-            // 
-            // picMaxFPSDisable
-            // 
-            this.picMaxFPSDisable.Image = ((System.Drawing.Image)(resources.GetObject("picMaxFPSDisable.Image")));
-            this.picMaxFPSDisable.Location = new System.Drawing.Point(79, 201);
-            this.picMaxFPSDisable.Name = "picMaxFPSDisable";
-            this.picMaxFPSDisable.Size = new System.Drawing.Size(40, 40);
-            this.picMaxFPSDisable.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picMaxFPSDisable.TabIndex = 21;
-            this.picMaxFPSDisable.TabStop = false;
-            this.picMaxFPSDisable.Click += new System.EventHandler(this.picMaxFPSDisable_Click);
-            this.picMaxFPSDisable.MouseLeave += new System.EventHandler(this.picMaxFPSDisable_MouseLeave);
-            this.picMaxFPSDisable.MouseHover += new System.EventHandler(this.picMaxFPSDisable_MouseHover);
-            // 
-            // bunifuLabel1
-            // 
-            this.bunifuLabel1.AllowParentOverrides = false;
-            this.bunifuLabel1.AutoEllipsis = false;
-            this.bunifuLabel1.AutoSize = false;
-            this.bunifuLabel1.BackColor = System.Drawing.Color.White;
-            this.bunifuLabel1.CursorType = null;
-            this.bunifuLabel1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.bunifuLabel1.Location = new System.Drawing.Point(8, 211);
-            this.bunifuLabel1.Name = "bunifuLabel1";
-            this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel1.Size = new System.Drawing.Size(115, 30);
-            this.bunifuLabel1.TabIndex = 22;
-            this.bunifuLabel1.Text = "bunifuLabel1";
-            this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -428,6 +447,9 @@ namespace Floating_Controller
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Menu_KeyDown);
             this.bunifuGradientPanel1.ResumeLayout(false);
             this.bunifuGradientPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picEnableUserAccountControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMaxFPSDisable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRemoveActivateWindowWaterMark)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDisableStickyKeysEnable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAlwaysOnOFF)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotate270)).EndInit();
@@ -446,8 +468,6 @@ namespace Floating_Controller
             ((System.ComponentModel.ISupportInitialize)(this.picRotateReset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picScreenShot)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picRemoveActivateWindowWaterMark)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMaxFPSDisable)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -479,5 +499,6 @@ namespace Floating_Controller
         private System.Windows.Forms.PictureBox picRemoveActivateWindowWaterMark;
         private System.Windows.Forms.PictureBox picMaxFPSDisable;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
+        private System.Windows.Forms.PictureBox picEnableUserAccountControl;
     }
 }

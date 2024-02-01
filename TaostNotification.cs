@@ -35,10 +35,18 @@ namespace Floating_Controller
 
         private void TaostNotification_Load(object sender, EventArgs e)
         {
-            Position();
+            AdjustWidthAndPosition();
 
             toastHide.Start();
             //toastTimer.Start();
+        }
+        private void AdjustWidthAndPosition()
+        {
+            // Set form width based on the label's width
+            this.Width = lblMessage.Width + 60; // Adjust 40 based on your design
+
+            // Set form position
+            Position();
         }
 
         private void toastTimer_Tick(object sender, EventArgs e)
@@ -70,7 +78,6 @@ namespace Floating_Controller
                 }
             }
         }
-
         private void Position()
         {
             int screenWidth = Screen.PrimaryScreen.WorkingArea.Width;

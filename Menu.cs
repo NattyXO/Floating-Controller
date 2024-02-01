@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Configuration;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace Floating_Controller
@@ -50,6 +49,9 @@ namespace Floating_Controller
             }
         }
 
+        // Retrieve the current user's username
+        string currentUsername = Environment.UserName;
+        
         private void picScreenShot_Click(object sender, EventArgs e)
         {
             // Call picExpandClose_Click with appropriate parameters
@@ -63,8 +65,11 @@ namespace Floating_Controller
 
             // Save the screenshot to the Pictures folder
             SaveScreenshot(screenshot);
-            ToastHelper.ToastShow("SUCCESS", "Save Successful.");
+            // Construct the success message with the current username
+            string successMessage = $"Save successful to C:\\Users\\{currentUsername}\\Pictures\\Screenshots.";
 
+            // Display the toast message
+            ToastHelper.ToastShow("SUCCESS", successMessage);
             // Restore Form1 to normal state
             Program.MainForm.WindowState = FormWindowState.Normal;
             Program.MainForm.picExpand_Click(sender, e);
@@ -601,7 +606,7 @@ namespace Floating_Controller
 
         private void picAlwaysOnOFF_Click(object sender, EventArgs e)
         {
-            
+
             picAlwaysOn.Visible = true;
             picAlwaysOnOFF.Visible = false;
             timer1.Stop();
@@ -730,7 +735,7 @@ namespace Floating_Controller
             KeyboardSimulator.SimulateKeyPress();
             ToastHelper.ToastShow("SUCCESS", "ON Keyboard Screen Activated.");
         }
-    
+
         const int VK_OEM_PERIOD = 0xBE; // Period key
 
         private void picEmojiKeyboard_Click(object sender, EventArgs e)
@@ -784,12 +789,9 @@ namespace Floating_Controller
             {
                 picDisableStickyKeys.Visible = true;
                 picDisableStickyKeysEnable.Visible = false;
-                ToastHelper.ToastShow("SUCCESS", "Sticky Keys Enabled.");
+                ToastHelper.ToastShow("INFO", "Go to Setting and enable it.");
             }
-            else
-            {
-                ToastHelper.ToastShow("ERROR", "Failed to enable Sticky Keys.");
-            }
+            
         }
 
         public static bool DisableStickyKeys()
@@ -817,7 +819,7 @@ namespace Floating_Controller
 
             return SystemParametersInfo(SPI_SETSTICKYKEYS, sk.cbSize, ref sk, SPIF_SENDCHANGE);
         }
-        
+
         const int VK_V = 0x56; // 'V' key
         private void picClipboardHistory_Click(object sender, EventArgs e)
         {
@@ -833,12 +835,86 @@ namespace Floating_Controller
             // Release the Windows key
             keybd_event((byte)VK_LWIN, 0, KEYEVENTF_KEYUP, IntPtr.Zero);
         }
-       
+
 
         private void picRefreshRateMax_Click(object sender, EventArgs e)
         {
 
         }
 
+
+        class Program1
+        {
+            private const string UacRegistryKey = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System";
+            private const string UacRegistryValue = "EnableLUA";
+
+            public static void DisableUAC()
+            {
+                try
+                {
+                    // Set the UAC registry value to 0 (disabled)
+                    Registry.SetValue(UacRegistryKey, UacRegistryValue, 0, RegistryValueKind.DWord);
+
+                    Console.WriteLine("");
+                    ToastHelper.ToastShow("SUCCESS", "User Account Control has been disabled. Please restart your computer.");
+                }
+                catch (Exception ex)
+                {
+                    ToastHelper.ToastShow("ERROR", $"Error disabling User Account Control: {ex.Message}");
+                }
+            }
+
+            public static void EnableUAC()
+            {
+                try
+                {
+                    // Set the UAC registry value back to 1 (enabled)
+                    Registry.SetValue(UacRegistryKey, UacRegistryValue, 1, RegistryValueKind.DWord);
+
+                    ToastHelper.ToastShow("SUCCESS", "User Account Control has been enabled. Please restart your computer.");
+                }
+                catch (Exception ex)
+                {
+                    ToastHelper.ToastShow("ERROR", $"Error enabling User Account Control: {ex.Message}");
+                }
+            }
+        }
+
+        private void picDisableUserAccountControl_Click(object sender, EventArgs e)
+        {
+            Program1.DisableUAC();
+        }
+
+        private void picGodModeFolder_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Get the desktop path
+                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+                // Specify the folder name and path
+                string godModeFolderPath = Path.Combine(desktopPath, "God Mode.{ED7BA470-8E54-465E-825C-99712043E01C}");
+
+                // Check if the folder already exists
+                if (!Directory.Exists(godModeFolderPath))
+                {
+                    // Create the God Mode folder
+                    Directory.CreateDirectory(godModeFolderPath);
+
+                    // Inform the user that the folder has been
+                    ToastHelper.ToastShow("SUCCESS", "God Mode folder created on the desktop.");
+                }
+                else
+                {
+                    // Inform the user that the folder already exists
+                    ToastHelper.ToastShow("INFO", "God Mode folder already exists on the desktop.");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions that might occur
+                ToastHelper.ToastShow("ERROR", $"Error enabling User Account Control: {ex.Message}");
+            }
+        }
     }
 }

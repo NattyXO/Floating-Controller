@@ -38,7 +38,7 @@ namespace Floating_Controller
             this.picRotate180 = new System.Windows.Forms.PictureBox();
             this.picRotate90 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.picDisableUserAccountControl = new System.Windows.Forms.PictureBox();
             this.picRefreshRateMax = new System.Windows.Forms.PictureBox();
             this.picClipboardHistory = new System.Windows.Forms.PictureBox();
             this.picDisableStickyKeys = new System.Windows.Forms.PictureBox();
@@ -60,7 +60,7 @@ namespace Floating_Controller
             ((System.ComponentModel.ISupportInitialize)(this.picRotate180)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotate90)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picDisableUserAccountControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRefreshRateMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picClipboardHistory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDisableStickyKeys)).BeginInit();
@@ -87,7 +87,7 @@ namespace Floating_Controller
             this.bunifuGradientPanel1.Controls.Add(this.picRotate180);
             this.bunifuGradientPanel1.Controls.Add(this.picRotate90);
             this.bunifuGradientPanel1.Controls.Add(this.pictureBox5);
-            this.bunifuGradientPanel1.Controls.Add(this.pictureBox9);
+            this.bunifuGradientPanel1.Controls.Add(this.picDisableUserAccountControl);
             this.bunifuGradientPanel1.Controls.Add(this.picRefreshRateMax);
             this.bunifuGradientPanel1.Controls.Add(this.picClipboardHistory);
             this.bunifuGradientPanel1.Controls.Add(this.picDisableStickyKeys);
@@ -177,15 +177,16 @@ namespace Floating_Controller
             this.pictureBox5.TabIndex = 13;
             this.pictureBox5.TabStop = false;
             // 
-            // pictureBox9
+            // picDisableUserAccountControl
             // 
-            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(79, 249);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox9.TabIndex = 12;
-            this.pictureBox9.TabStop = false;
+            this.picDisableUserAccountControl.Image = ((System.Drawing.Image)(resources.GetObject("picDisableUserAccountControl.Image")));
+            this.picDisableUserAccountControl.Location = new System.Drawing.Point(79, 249);
+            this.picDisableUserAccountControl.Name = "picDisableUserAccountControl";
+            this.picDisableUserAccountControl.Size = new System.Drawing.Size(40, 40);
+            this.picDisableUserAccountControl.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picDisableUserAccountControl.TabIndex = 12;
+            this.picDisableUserAccountControl.TabStop = false;
+            this.picDisableUserAccountControl.Click += new System.EventHandler(this.picDisableUserAccountControl_Click);
             // 
             // picRefreshRateMax
             // 
@@ -240,6 +241,7 @@ namespace Floating_Controller
             this.picGodModeFolder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picGodModeFolder.TabIndex = 7;
             this.picGodModeFolder.TabStop = false;
+            this.picGodModeFolder.Click += new System.EventHandler(this.picGodModeFolder_Click);
             // 
             // picKeyboardOnScreen
             // 
@@ -346,7 +348,7 @@ namespace Floating_Controller
             ((System.ComponentModel.ISupportInitialize)(this.picRotate180)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotate90)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picDisableUserAccountControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRefreshRateMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picClipboardHistory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDisableStickyKeys)).EndInit();
@@ -368,7 +370,7 @@ namespace Floating_Controller
         private Bunifu.UI.WinForms.BunifuGradientPanel bunifuGradientPanel1;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.PictureBox picDisableUserAccountControl;
         private System.Windows.Forms.PictureBox picRefreshRateMax;
         private System.Windows.Forms.PictureBox picClipboardHistory;
         private System.Windows.Forms.PictureBox picDisableStickyKeys;

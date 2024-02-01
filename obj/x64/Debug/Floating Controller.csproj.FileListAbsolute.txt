@@ -1,10 +1,3 @@
-C:\Users\NattyXO\source\repos\Floating Controller\obj\x64\Debug\Floating_Controller.frmFloat.resources
-C:\Users\NattyXO\source\repos\Floating Controller\obj\x64\Debug\Floating_Controller.Menu.resources
-C:\Users\NattyXO\source\repos\Floating Controller\obj\x64\Debug\Floating_Controller.Properties.Resources.resources
-C:\Users\NattyXO\source\repos\Floating Controller\obj\x64\Debug\Floating_Controller.TaostNotification.resources
-C:\Users\NattyXO\source\repos\Floating Controller\obj\x64\Debug\Floating Controller.csproj.GenerateResource.cache
-C:\Users\NattyXO\source\repos\Floating Controller\obj\x64\Debug\Floating Controller.exe.licenses
-C:\Users\NattyXO\source\repos\Floating Controller\obj\x64\Debug\Floating Controller.csproj.CoreCompileInputs.cache
 C:\Users\NattyXO\source\repos\Floating Controller\bin\x64\Debug\Floating Controller.exe.config
 C:\Users\NattyXO\source\repos\Floating Controller\bin\x64\Debug\Floating Controller.exe
 C:\Users\NattyXO\source\repos\Floating Controller\bin\x64\Debug\Floating Controller.pdb
@@ -72,6 +65,13 @@ C:\Users\NattyXO\source\repos\Floating Controller\bin\x64\Debug\Bunifu.UI.WinFor
 C:\Users\NattyXO\source\repos\Floating Controller\bin\x64\Debug\Bunifu.UI.WinForms.BunifuToolTip.xml
 C:\Users\NattyXO\source\repos\Floating Controller\bin\x64\Debug\Bunifu.UI.WinForms.BunifuTransition.xml
 C:\Users\NattyXO\source\repos\Floating Controller\bin\x64\Debug\Bunifu.UI.WinForms.BunifuUserControl.xml
+C:\Users\NattyXO\source\repos\Floating Controller\obj\x64\Debug\Floating_Controller.frmFloat.resources
+C:\Users\NattyXO\source\repos\Floating Controller\obj\x64\Debug\Floating_Controller.Menu.resources
+C:\Users\NattyXO\source\repos\Floating Controller\obj\x64\Debug\Floating_Controller.Properties.Resources.resources
+C:\Users\NattyXO\source\repos\Floating Controller\obj\x64\Debug\Floating_Controller.TaostNotification.resources
+C:\Users\NattyXO\source\repos\Floating Controller\obj\x64\Debug\Floating Controller.csproj.GenerateResource.cache
+C:\Users\NattyXO\source\repos\Floating Controller\obj\x64\Debug\Floating Controller.exe.licenses
+C:\Users\NattyXO\source\repos\Floating Controller\obj\x64\Debug\Floating Controller.csproj.CoreCompileInputs.cache
 C:\Users\NattyXO\source\repos\Floating Controller\obj\x64\Debug\Floating Controller.csproj.CopyComplete
 C:\Users\NattyXO\source\repos\Floating Controller\obj\x64\Debug\Floating Controller.exe
 C:\Users\NattyXO\source\repos\Floating Controller\obj\x64\Debug\Floating Controller.pdb

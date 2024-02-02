@@ -42,7 +42,7 @@ namespace Floating_Controller
             this.picRotate270 = new System.Windows.Forms.PictureBox();
             this.picRotate180 = new System.Windows.Forms.PictureBox();
             this.picRotate90 = new System.Windows.Forms.PictureBox();
-            this.picBIOSSetting = new System.Windows.Forms.PictureBox();
+            this.picChangeTaskBarPosition = new System.Windows.Forms.PictureBox();
             this.picDisableUserAccountControl = new System.Windows.Forms.PictureBox();
             this.picMaxFPS = new System.Windows.Forms.PictureBox();
             this.picClipboardHistory = new System.Windows.Forms.PictureBox();
@@ -66,7 +66,7 @@ namespace Floating_Controller
             ((System.ComponentModel.ISupportInitialize)(this.picRotate270)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotate180)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotate90)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picBIOSSetting)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picChangeTaskBarPosition)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDisableUserAccountControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMaxFPS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picClipboardHistory)).BeginInit();
@@ -87,8 +87,8 @@ namespace Floating_Controller
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuGradientPanel1.BorderRadius = 1;
-            this.bunifuGradientPanel1.Controls.Add(this.picEnableUserAccountControl);
             this.bunifuGradientPanel1.Controls.Add(this.bunifuLabel1);
+            this.bunifuGradientPanel1.Controls.Add(this.picEnableUserAccountControl);
             this.bunifuGradientPanel1.Controls.Add(this.lblPicInfo);
             this.bunifuGradientPanel1.Controls.Add(this.picMaxFPSDisable);
             this.bunifuGradientPanel1.Controls.Add(this.picRemoveActivateWindowWaterMark);
@@ -97,7 +97,7 @@ namespace Floating_Controller
             this.bunifuGradientPanel1.Controls.Add(this.picRotate270);
             this.bunifuGradientPanel1.Controls.Add(this.picRotate180);
             this.bunifuGradientPanel1.Controls.Add(this.picRotate90);
-            this.bunifuGradientPanel1.Controls.Add(this.picBIOSSetting);
+            this.bunifuGradientPanel1.Controls.Add(this.picChangeTaskBarPosition);
             this.bunifuGradientPanel1.Controls.Add(this.picDisableUserAccountControl);
             this.bunifuGradientPanel1.Controls.Add(this.picMaxFPS);
             this.bunifuGradientPanel1.Controls.Add(this.picClipboardHistory);
@@ -143,7 +143,7 @@ namespace Floating_Controller
             this.bunifuLabel1.BackColor = System.Drawing.Color.White;
             this.bunifuLabel1.CursorType = null;
             this.bunifuLabel1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.bunifuLabel1.Location = new System.Drawing.Point(8, 211);
+            this.bunifuLabel1.Location = new System.Drawing.Point(8, 222);
             this.bunifuLabel1.Name = "bunifuLabel1";
             this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel1.Size = new System.Drawing.Size(115, 30);
@@ -258,16 +258,18 @@ namespace Floating_Controller
             this.picRotate90.MouseLeave += new System.EventHandler(this.picRotate90_MouseLeave);
             this.picRotate90.MouseHover += new System.EventHandler(this.picRotate90_MouseHover);
             // 
-            // picBIOSSetting
+            // picChangeTaskBarPosition
             // 
-            this.picBIOSSetting.Image = ((System.Drawing.Image)(resources.GetObject("picBIOSSetting.Image")));
-            this.picBIOSSetting.Location = new System.Drawing.Point(79, 297);
-            this.picBIOSSetting.Name = "picBIOSSetting";
-            this.picBIOSSetting.Size = new System.Drawing.Size(40, 40);
-            this.picBIOSSetting.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picBIOSSetting.TabIndex = 13;
-            this.picBIOSSetting.TabStop = false;
-            this.picBIOSSetting.Click += new System.EventHandler(this.picBIOSSetting_Click);
+            this.picChangeTaskBarPosition.Image = ((System.Drawing.Image)(resources.GetObject("picChangeTaskBarPosition.Image")));
+            this.picChangeTaskBarPosition.Location = new System.Drawing.Point(79, 297);
+            this.picChangeTaskBarPosition.Name = "picChangeTaskBarPosition";
+            this.picChangeTaskBarPosition.Size = new System.Drawing.Size(40, 40);
+            this.picChangeTaskBarPosition.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picChangeTaskBarPosition.TabIndex = 13;
+            this.picChangeTaskBarPosition.TabStop = false;
+            this.picChangeTaskBarPosition.Click += new System.EventHandler(this.picChangeTaskBarPosition_Click);
+            this.picChangeTaskBarPosition.MouseLeave += new System.EventHandler(this.picChangeTaskBarPosition_MouseLeave);
+            this.picChangeTaskBarPosition.MouseHover += new System.EventHandler(this.picChangeTaskBarPosition_MouseHover);
             // 
             // picDisableUserAccountControl
             // 
@@ -455,7 +457,7 @@ namespace Floating_Controller
             ((System.ComponentModel.ISupportInitialize)(this.picRotate270)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotate180)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotate90)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picBIOSSetting)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picChangeTaskBarPosition)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDisableUserAccountControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMaxFPS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picClipboardHistory)).EndInit();
@@ -476,7 +478,7 @@ namespace Floating_Controller
 
         private Bunifu.UI.WinForms.BunifuGradientPanel bunifuGradientPanel1;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
-        private System.Windows.Forms.PictureBox picBIOSSetting;
+        private System.Windows.Forms.PictureBox picChangeTaskBarPosition;
         private System.Windows.Forms.PictureBox picDisableUserAccountControl;
         private System.Windows.Forms.PictureBox picMaxFPS;
         private System.Windows.Forms.PictureBox picClipboardHistory;

@@ -1,5 +1,4 @@
-﻿using IWshRuntimeLibrary;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using System;
 using System.Configuration;
 using System.Diagnostics;
@@ -8,6 +7,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
+
 
 namespace Floating_Controller
 {
@@ -887,13 +887,25 @@ namespace Floating_Controller
                     Registry.SetValue(UacRegistryKey, UacRegistryValue, 0, RegistryValueKind.DWord);
 
                     Console.WriteLine("");
+                    DialogResult result = MessageBox.Show("Changes will take effect after restarting your computer. Do you want to restart now?", "Restart Required", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        // Restart the computer
+                        RunCommandAsAdmin("shutdown", "/r /t 0");
+                    }
+                    else
+                    {
+                        // User selected "Restart Later"
+                        // Close the dialog box or perform any other desired action
+                    }
                     ToastHelper.ToastShow("SUCCESS", "User Account Control has been disabled. Please restart your computer.");
                 }
                 catch (Exception ex)
                 {
-                    
+
                     ToastHelper.ToastShow("ERROR", $"Error disabling User Account Control: {ex.Message}");
-                    
+
                 }
             }
 
@@ -909,7 +921,7 @@ namespace Floating_Controller
                 catch (Exception ex)
                 {
                     ToastHelper.ToastShow("ERROR", $"Error enabling User Account Control: {ex.Message}");
-                    
+
                 }
             }
         }
@@ -977,7 +989,7 @@ namespace Floating_Controller
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Rotate 270 Degree";
             // Move lblPicInfo to the right by 20 pixels
-            lblPicInfo.Location = new Point(picRotate270.Location.X + 20, picRotate270.Location.Y-20);
+            lblPicInfo.Location = new Point(picRotate270.Location.X + 20, picRotate270.Location.Y - 20);
         }
 
         private void picRotate270_MouseLeave(object sender, EventArgs e)
@@ -990,7 +1002,7 @@ namespace Floating_Controller
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Rotate 180 Degree";
             // Move lblPicInfo to the right by 20 pixels
-            lblPicInfo.Location = new Point(picRotate180.Location.X + 20, picRotate180.Location.Y-20);
+            lblPicInfo.Location = new Point(picRotate180.Location.X + 20, picRotate180.Location.Y - 20);
         }
 
         private void picRotate180_MouseLeave(object sender, EventArgs e)
@@ -1003,7 +1015,7 @@ namespace Floating_Controller
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Rotate 90 Degree";
             // Move lblPicInfo to the right by 20 pixels
-            lblPicInfo.Location = new Point(picRotate90.Location.X + 20, picRotate90.Location.Y-20);
+            lblPicInfo.Location = new Point(picRotate90.Location.X + 20, picRotate90.Location.Y - 20);
         }
 
         private void picRotate90_MouseLeave(object sender, EventArgs e)
@@ -1016,7 +1028,7 @@ namespace Floating_Controller
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Default";
             // Move lblPicInfo to the right by 20 pixels
-            lblPicInfo.Location = new Point(picRotate.Location.X + 20, picRotate.Location.Y-20);
+            lblPicInfo.Location = new Point(picRotate.Location.X + 20, picRotate.Location.Y - 20);
         }
 
         private void picRotate_MouseLeave(object sender, EventArgs e)
@@ -1029,7 +1041,7 @@ namespace Floating_Controller
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Reset Rotate";
             // Move lblPicInfo to the right by 20 pixels
-            lblPicInfo.Location = new Point(picRotateReset.Location.X + 20, picRotateReset.Location.Y-20);
+            lblPicInfo.Location = new Point(picRotateReset.Location.X + 20, picRotateReset.Location.Y - 20);
         }
 
         private void picRotateReset_MouseLeave(object sender, EventArgs e)
@@ -1042,7 +1054,7 @@ namespace Floating_Controller
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Default";
             // Move lblPicInfo to the right by 20 pixels
-            lblPicInfo.Location = new Point(picAlwaysOnOFF.Location.X + 20, picAlwaysOnOFF.Location.Y-20);
+            lblPicInfo.Location = new Point(picAlwaysOnOFF.Location.X + 20, picAlwaysOnOFF.Location.Y - 20);
         }
 
         private void picAlwaysOnOFF_MouseLeave(object sender, EventArgs e)
@@ -1055,7 +1067,7 @@ namespace Floating_Controller
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Always On Screen";
             // Move lblPicInfo to the right by 20 pixels
-            lblPicInfo.Location = new Point(picAlwaysOn.Location.X + 20, picAlwaysOn.Location.Y-20);
+            lblPicInfo.Location = new Point(picAlwaysOn.Location.X + 20, picAlwaysOn.Location.Y - 20);
         }
 
         private void picAlwaysOn_MouseLeave(object sender, EventArgs e)
@@ -1068,7 +1080,7 @@ namespace Floating_Controller
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Keyboard On Screen";
             // Move lblPicInfo to the right by 20 pixels
-            lblPicInfo.Location = new Point(picKeyboardOnScreen.Location.X + 5, picKeyboardOnScreen.Location.Y-20);
+            lblPicInfo.Location = new Point(picKeyboardOnScreen.Location.X + 5, picKeyboardOnScreen.Location.Y - 20);
         }
 
         private void picKeyboardOnScreen_MouseLeave(object sender, EventArgs e)
@@ -1081,7 +1093,7 @@ namespace Floating_Controller
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "God Mode Folder";
             // Move lblPicInfo to the right by 20 pixels
-            lblPicInfo.Location = new Point(picGodModeFolder.Location.X - 50, picGodModeFolder.Location.Y+40);
+            lblPicInfo.Location = new Point(picGodModeFolder.Location.X - 50, picGodModeFolder.Location.Y + 40);
         }
 
         private void picGodModeFolder_MouseLeave(object sender, EventArgs e)
@@ -1094,7 +1106,7 @@ namespace Floating_Controller
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Show Emoji Keyboard";
             // Move lblPicInfo to the right by 20 pixels
-            lblPicInfo.Location = new Point(picEmojiKeyboard.Location.X - 70, picEmojiKeyboard.Location.Y-20);
+            lblPicInfo.Location = new Point(picEmojiKeyboard.Location.X - 70, picEmojiKeyboard.Location.Y - 20);
         }
 
         private void picEmojiKeyboard_MouseLeave(object sender, EventArgs e)
@@ -1107,7 +1119,7 @@ namespace Floating_Controller
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Disable Sticky Keys";
             // Move lblPicInfo to the right by 20 pixels
-            lblPicInfo.Location = new Point(picDisableStickyKeys.Location.X - 50, picDisableStickyKeys.Location.Y-20);
+            lblPicInfo.Location = new Point(picDisableStickyKeys.Location.X - 50, picDisableStickyKeys.Location.Y - 20);
         }
 
         private void picDisableStickyKeys_MouseLeave(object sender, EventArgs e)
@@ -1120,7 +1132,7 @@ namespace Floating_Controller
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Show Clipboard History";
             // Move lblPicInfo to the right by 20 pixels
-            lblPicInfo.Location = new Point(picClipboardHistory.Location.X - 75, picClipboardHistory.Location.Y-20);
+            lblPicInfo.Location = new Point(picClipboardHistory.Location.X - 75, picClipboardHistory.Location.Y - 20);
         }
 
         private void picClipboardHistory_MouseLeave(object sender, EventArgs e)
@@ -1136,43 +1148,7 @@ namespace Floating_Controller
         }
 
 
-        private void picBIOSSetting_Click(object sender, EventArgs e)
-        {
-            CreateShortcutOnDesktop("Enter BIOS", @"C:\Windows\System32\shutdown.exe /r /fw /t 00", true);
-        }
 
-        public static void CreateShortcutOnDesktop(string shortcutName, string targetPath, bool runAsAdministrator)
-        {
-            try
-            {
-                // Get the desktop path
-                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-
-                string shortcutLocation = Path.Combine(desktopPath, $"{shortcutName}.lnk");
-                WshShell shell = new WshShell();
-                IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutLocation);
-
-                shortcut.Description = "Enter BIOS";   // The description of the shortcut
-                shortcut.TargetPath = "C:\\Windows\\System32\\cmd.exe"; // Use cmd.exe as the target to run the command
-                shortcut.Arguments = $"/c {targetPath}"; // Pass the command as an argument to cmd.exe
-                shortcut.Save();
-
-                // Set the run as administrator flag
-                if (runAsAdministrator)
-                {
-                    ProcessStartInfo psi = new ProcessStartInfo(shortcutLocation);
-                    psi.Verb = "runas";
-                    psi.UseShellExecute = true; // Use the default shell for opening the shortcut
-                    Process.Start(psi);
-                }
-
-                Console.WriteLine("Shortcut created on the desktop.");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred: {ex.Message}");
-            }
-        }
         private void picMaxFPS_Click(object sender, EventArgs e)
         {
             // Replace the instance ID with the actual instance ID of the device you want to disable
@@ -1219,8 +1195,7 @@ namespace Floating_Controller
         private void picRemoveActivateWindowWaterMark_Click(object sender, EventArgs e)
         {
             // Run the command in an elevated Command Prompt
-            RunCommandAsAdmin("bcdedit.exe", "-set TESTSIGNING OFF");
-
+            RunCommandAsAdmin("powershell.exe", "bcdedit.exe -set TESTSIGNING OFF");
             // Ask the user whether to restart now or later
             DialogResult result = MessageBox.Show("Changes will take effect after restarting your computer. Do you want to restart now?", "Restart Required", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
@@ -1234,8 +1209,10 @@ namespace Floating_Controller
                 // User selected "Restart Later"
                 // Close the dialog box or perform any other desired action
             }
+
         }
-        private void RunCommandAsAdmin(string fileName, string arguments)
+
+        public static void RunCommandAsAdmin(string fileName, string arguments)
         {
             // Create a new ProcessStartInfo
             ProcessStartInfo psi = new ProcessStartInfo
@@ -1248,7 +1225,7 @@ namespace Floating_Controller
 
             // Start the process
             Process.Start(psi);
-            ToastHelper.ToastShow("SUCCESS", "Command Finished.");
+            //ToastHelper.ToastShow("SUCCESS", "Command Finished.");
         }
 
         private void picMaxFPSDisable_Click(object sender, EventArgs e)
@@ -1268,7 +1245,7 @@ namespace Floating_Controller
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Enable Maximum FPS";
             // Move lblPicInfo to the right by 20 pixels
-            lblPicInfo.Location = new Point(picMaxFPS.Location.X - 75, picMaxFPS.Location.Y-20);
+            lblPicInfo.Location = new Point(picMaxFPS.Location.X - 75, picMaxFPS.Location.Y - 20);
         }
 
         private void picMaxFPS_MouseLeave(object sender, EventArgs e)
@@ -1281,7 +1258,7 @@ namespace Floating_Controller
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Disable Maximum FPS";
             // Move lblPicInfo to the right by 20 pixels
-            lblPicInfo.Location = new Point(picMaxFPSDisable.Location.X - 75, picMaxFPSDisable.Location.Y-20);
+            lblPicInfo.Location = new Point(picMaxFPSDisable.Location.X - 75, picMaxFPSDisable.Location.Y - 20);
         }
 
         private void picMaxFPSDisable_MouseLeave(object sender, EventArgs e)
@@ -1330,6 +1307,59 @@ namespace Floating_Controller
         private void picEnableUserAccountControl_MouseLeave(object sender, EventArgs e)
         {
             bunifuLabel1.Visible = false;
+        }
+
+
+        private void MoveTaskbarPosition()
+        {
+            const string registryPath = @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3";
+            const string valueName = "Settings";
+
+            // Retrieve current registry value
+            byte[] settings = (byte[])Registry.GetValue(registryPath, valueName, null);
+
+            if (settings != null && settings.Length >= 40)
+            {
+                // Toggle taskbar position (2 for bottom, 4 for top)
+                settings[12] = (byte)(4 - settings[12]);
+
+                // Update registry with the modified settings
+                Registry.SetValue(registryPath, valueName, settings);
+
+                // Restart Explorer process to apply changes
+                RestartExplorerProcess();
+            }
+        }
+
+        private void RestartExplorerProcess()
+        {
+            // Kill the Explorer process
+            foreach (var process in Process.GetProcessesByName("explorer"))
+            {
+                process.Kill();
+            }
+
+            // Start Explorer process
+            Process.Start("explorer.exe");
+        }
+
+        private void picChangeTaskBarPosition_Click(object sender, EventArgs e)
+        {
+            MoveTaskbarPosition();
+            ToastHelper.ToastShow("SUCCESS", "successfully Change taskbar position.");
+        }
+
+        private void picChangeTaskBarPosition_MouseHover(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = true;
+            lblPicInfo.Text = "Change Taskbar Position";
+            // Move lblPicInfo to the right by 20 pixels
+            lblPicInfo.Location = new Point(picChangeTaskBarPosition.Location.X - 75, picChangeTaskBarPosition.Location.Y - 20);
+        }
+
+        private void picChangeTaskBarPosition_MouseLeave(object sender, EventArgs e)
+        {
+            lblPicInfo.Visible = false;
         }
     }
 }

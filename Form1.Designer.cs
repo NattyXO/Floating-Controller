@@ -130,11 +130,12 @@ namespace Floating_Controller
             this.ControlBox = false;
             this.Controls.Add(this.bunifuGradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmFloat";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Float";
+            this.Text = "Floating Controller";
             this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.picExpand)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();

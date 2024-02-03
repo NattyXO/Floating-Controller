@@ -32,8 +32,9 @@ namespace Floating_Controller
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.bunifuGradientPanel1 = new Bunifu.UI.WinForms.BunifuGradientPanel();
-            this.picEnableUserAccountControl = new System.Windows.Forms.PictureBox();
+            this.picEnableWindowDefender = new System.Windows.Forms.PictureBox();
             this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.picEnableUserAccountControl = new System.Windows.Forms.PictureBox();
             this.lblPicInfo = new Bunifu.UI.WinForms.BunifuLabel();
             this.picMaxFPSDisable = new System.Windows.Forms.PictureBox();
             this.picRemoveActivateWindowWaterMark = new System.Windows.Forms.PictureBox();
@@ -50,7 +51,7 @@ namespace Floating_Controller
             this.picEmojiKeyboard = new System.Windows.Forms.PictureBox();
             this.picGodModeFolder = new System.Windows.Forms.PictureBox();
             this.picKeyboardOnScreen = new System.Windows.Forms.PictureBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.picDisableWindowDefender = new System.Windows.Forms.PictureBox();
             this.picAlwaysOn = new System.Windows.Forms.PictureBox();
             this.picRotateReset = new System.Windows.Forms.PictureBox();
             this.picRotate = new System.Windows.Forms.PictureBox();
@@ -58,6 +59,7 @@ namespace Floating_Controller
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.bunifuGradientPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picEnableWindowDefender)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEnableUserAccountControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMaxFPSDisable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRemoveActivateWindowWaterMark)).BeginInit();
@@ -74,7 +76,7 @@ namespace Floating_Controller
             ((System.ComponentModel.ISupportInitialize)(this.picEmojiKeyboard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGodModeFolder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picKeyboardOnScreen)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picDisableWindowDefender)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAlwaysOn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotateReset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotate)).BeginInit();
@@ -88,6 +90,7 @@ namespace Floating_Controller
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuGradientPanel1.BorderRadius = 1;
             this.bunifuGradientPanel1.Controls.Add(this.bunifuLabel1);
+            this.bunifuGradientPanel1.Controls.Add(this.picEnableWindowDefender);
             this.bunifuGradientPanel1.Controls.Add(this.picEnableUserAccountControl);
             this.bunifuGradientPanel1.Controls.Add(this.lblPicInfo);
             this.bunifuGradientPanel1.Controls.Add(this.picMaxFPSDisable);
@@ -105,7 +108,7 @@ namespace Floating_Controller
             this.bunifuGradientPanel1.Controls.Add(this.picEmojiKeyboard);
             this.bunifuGradientPanel1.Controls.Add(this.picGodModeFolder);
             this.bunifuGradientPanel1.Controls.Add(this.picKeyboardOnScreen);
-            this.bunifuGradientPanel1.Controls.Add(this.pictureBox8);
+            this.bunifuGradientPanel1.Controls.Add(this.picDisableWindowDefender);
             this.bunifuGradientPanel1.Controls.Add(this.picAlwaysOn);
             this.bunifuGradientPanel1.Controls.Add(this.picRotateReset);
             this.bunifuGradientPanel1.Controls.Add(this.picRotate);
@@ -122,6 +125,36 @@ namespace Floating_Controller
             this.bunifuGradientPanel1.TabIndex = 0;
             this.bunifuGradientPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bunifuGradientPanel1_MouseDown);
             // 
+            // picEnableWindowDefender
+            // 
+            this.picEnableWindowDefender.Image = ((System.Drawing.Image)(resources.GetObject("picEnableWindowDefender.Image")));
+            this.picEnableWindowDefender.Location = new System.Drawing.Point(18, 201);
+            this.picEnableWindowDefender.Name = "picEnableWindowDefender";
+            this.picEnableWindowDefender.Size = new System.Drawing.Size(40, 40);
+            this.picEnableWindowDefender.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picEnableWindowDefender.TabIndex = 24;
+            this.picEnableWindowDefender.TabStop = false;
+            this.picEnableWindowDefender.Click += new System.EventHandler(this.picEnableWindowDefender_Click);
+            this.picEnableWindowDefender.MouseLeave += new System.EventHandler(this.picEnableWindowDefender_MouseLeave);
+            this.picEnableWindowDefender.MouseHover += new System.EventHandler(this.picEnableWindowDefender_MouseHover);
+            // 
+            // bunifuLabel1
+            // 
+            this.bunifuLabel1.AllowParentOverrides = false;
+            this.bunifuLabel1.AutoEllipsis = false;
+            this.bunifuLabel1.AutoSize = false;
+            this.bunifuLabel1.BackColor = System.Drawing.Color.White;
+            this.bunifuLabel1.CursorType = null;
+            this.bunifuLabel1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.bunifuLabel1.Location = new System.Drawing.Point(8, 213);
+            this.bunifuLabel1.Name = "bunifuLabel1";
+            this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel1.Size = new System.Drawing.Size(115, 30);
+            this.bunifuLabel1.TabIndex = 22;
+            this.bunifuLabel1.Text = "bunifuLabel1";
+            this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
             // picEnableUserAccountControl
             // 
             this.picEnableUserAccountControl.Image = ((System.Drawing.Image)(resources.GetObject("picEnableUserAccountControl.Image")));
@@ -134,23 +167,6 @@ namespace Floating_Controller
             this.picEnableUserAccountControl.Click += new System.EventHandler(this.picEnableUserAccountControl_Click);
             this.picEnableUserAccountControl.MouseLeave += new System.EventHandler(this.picEnableUserAccountControl_MouseLeave);
             this.picEnableUserAccountControl.MouseHover += new System.EventHandler(this.picEnableUserAccountControl_MouseHover);
-            // 
-            // bunifuLabel1
-            // 
-            this.bunifuLabel1.AllowParentOverrides = false;
-            this.bunifuLabel1.AutoEllipsis = false;
-            this.bunifuLabel1.AutoSize = false;
-            this.bunifuLabel1.BackColor = System.Drawing.Color.White;
-            this.bunifuLabel1.CursorType = null;
-            this.bunifuLabel1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.bunifuLabel1.Location = new System.Drawing.Point(8, 222);
-            this.bunifuLabel1.Name = "bunifuLabel1";
-            this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel1.Size = new System.Drawing.Size(115, 30);
-            this.bunifuLabel1.TabIndex = 22;
-            this.bunifuLabel1.Text = "bunifuLabel1";
-            this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // lblPicInfo
             // 
@@ -362,15 +378,18 @@ namespace Floating_Controller
             this.picKeyboardOnScreen.MouseLeave += new System.EventHandler(this.picKeyboardOnScreen_MouseLeave);
             this.picKeyboardOnScreen.MouseHover += new System.EventHandler(this.picKeyboardOnScreen_MouseHover);
             // 
-            // pictureBox8
+            // picDisableWindowDefender
             // 
-            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(18, 201);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox8.TabIndex = 4;
-            this.pictureBox8.TabStop = false;
+            this.picDisableWindowDefender.Image = ((System.Drawing.Image)(resources.GetObject("picDisableWindowDefender.Image")));
+            this.picDisableWindowDefender.Location = new System.Drawing.Point(18, 201);
+            this.picDisableWindowDefender.Name = "picDisableWindowDefender";
+            this.picDisableWindowDefender.Size = new System.Drawing.Size(40, 40);
+            this.picDisableWindowDefender.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picDisableWindowDefender.TabIndex = 4;
+            this.picDisableWindowDefender.TabStop = false;
+            this.picDisableWindowDefender.Click += new System.EventHandler(this.picDisableWindowDefender_Click);
+            this.picDisableWindowDefender.MouseLeave += new System.EventHandler(this.picDisableWindowDefender_MouseLeave);
+            this.picDisableWindowDefender.MouseHover += new System.EventHandler(this.picDisableWindowDefender_MouseHover);
             // 
             // picAlwaysOn
             // 
@@ -449,6 +468,7 @@ namespace Floating_Controller
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Menu_KeyDown);
             this.bunifuGradientPanel1.ResumeLayout(false);
             this.bunifuGradientPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picEnableWindowDefender)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEnableUserAccountControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMaxFPSDisable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRemoveActivateWindowWaterMark)).EndInit();
@@ -465,7 +485,7 @@ namespace Floating_Controller
             ((System.ComponentModel.ISupportInitialize)(this.picEmojiKeyboard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGodModeFolder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picKeyboardOnScreen)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picDisableWindowDefender)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAlwaysOn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotateReset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotate)).EndInit();
@@ -486,7 +506,7 @@ namespace Floating_Controller
         private System.Windows.Forms.PictureBox picEmojiKeyboard;
         private System.Windows.Forms.PictureBox picGodModeFolder;
         private System.Windows.Forms.PictureBox picKeyboardOnScreen;
-        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.PictureBox picDisableWindowDefender;
         private System.Windows.Forms.PictureBox picAlwaysOn;
         private System.Windows.Forms.PictureBox picRotateReset;
         private System.Windows.Forms.PictureBox picRotate;
@@ -502,5 +522,6 @@ namespace Floating_Controller
         private System.Windows.Forms.PictureBox picMaxFPSDisable;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
         private System.Windows.Forms.PictureBox picEnableUserAccountControl;
+        private System.Windows.Forms.PictureBox picEnableWindowDefender;
     }
 }

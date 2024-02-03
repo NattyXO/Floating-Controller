@@ -33,6 +33,7 @@ namespace Floating_Controller
             picMaxFPSDisable.Visible = false;
             bunifuLabel1.Visible = false;
             picEnableUserAccountControl.Visible = false;
+            picEnableWindowDefender.Visible = false;
             timer1.Interval = 15000; // Set the interval to 15 seconds (adjust as needed)
             timer1.Tick += PicAlwaysOnTimer_Tick;
             timer1.Start();
@@ -1258,7 +1259,7 @@ namespace Floating_Controller
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Disable Maximum FPS";
             // Move lblPicInfo to the right by 20 pixels
-            lblPicInfo.Location = new Point(picMaxFPSDisable.Location.X - 75, picMaxFPSDisable.Location.Y - 20);
+            lblPicInfo.Location = new Point(picMaxFPSDisable.Location.X - 12, picMaxFPSDisable.Location.Y - 35);
         }
 
         private void picMaxFPSDisable_MouseLeave(object sender, EventArgs e)
@@ -1271,7 +1272,7 @@ namespace Floating_Controller
             bunifuLabel1.Visible = true;
             bunifuLabel1.Text = "Remove Activate Window WaterMark";
             // Move lblPicInfo to the right by 20 pixels
-            //bunifuLabel1.Location = new Point(picRemoveActivateWindowWaterMark.Location.X - 65, picRemoveActivateWindowWaterMark.Location.Y);
+            bunifuLabel1.Location = new Point(picRemoveActivateWindowWaterMark.Location.X - 12, picRemoveActivateWindowWaterMark.Location.Y - 35);
         }
 
         private void picRemoveActivateWindowWaterMark_MouseLeave(object sender, EventArgs e)
@@ -1285,7 +1286,7 @@ namespace Floating_Controller
             bunifuLabel1.Visible = true;
             bunifuLabel1.Text = "Disable User Account Control";
             // Move lblPicInfo to the right by 20 pixels
-            //lblPicInfo.Location = new Point(picDisableUserAccountControl.Location.X - 75, picDisableUserAccountControl.Location.Y - 20);
+            lblPicInfo.Location = new Point(picDisableUserAccountControl.Location.X - 35, picDisableUserAccountControl.Location.Y - 20);
 
         }
 
@@ -1360,6 +1361,85 @@ namespace Floating_Controller
         private void picChangeTaskBarPosition_MouseLeave(object sender, EventArgs e)
         {
             lblPicInfo.Visible = false;
+        }
+
+        private void EnableWindowsDefender()
+        {
+            // Modify the registry to enable Windows Defender
+            RegistryKey registryKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows Defender", true);
+
+            if (registryKey != null)
+            {
+                registryKey.SetValue("DisableAntiSpyware", 0, RegistryValueKind.DWord);
+                registryKey.Close();
+            }
+        }
+        private void picDisableWindowDefender_Click(object sender, EventArgs e)
+        {
+            // Set visibility for "Enable" button to true
+            picEnableWindowDefender.Visible = true;
+
+            // Set visibility for "Disable" button to false
+            picDisableWindowDefender.Visible = false;
+
+            ExecutePowerShellCommand("Set-MpPreference -DisableRealtimeMonitoring $true");
+            ToastHelper.ToastShow("SUCCESS", "successfully Disable Windows Defender.");
+        }
+
+        private void picEnableWindowDefender_Click(object sender, EventArgs e)
+        {
+            // Set visibility for "Enable" button to false
+            picEnableWindowDefender.Visible = false;
+
+            // Set visibility for "Disable" button to true
+            picDisableWindowDefender.Visible = true;
+
+            // Example:
+            ExecutePowerShellCommand("Set-MpPreference -DisableRealtimeMonitoring $false");
+            ToastHelper.ToastShow("SUCCESS", "successfully Enable Windows Defender.");
+        }
+        private void ExecutePowerShellCommand(string command)
+        {
+            System.Diagnostics.ProcessStartInfo psi = new System.Diagnostics.ProcessStartInfo();
+            psi.FileName = "powershell";
+            psi.Arguments = command;
+            psi.RedirectStandardOutput = true;
+            psi.UseShellExecute = false;
+            psi.CreateNoWindow = true;
+
+            using (System.Diagnostics.Process process = new System.Diagnostics.Process())
+            {
+                process.StartInfo = psi;
+                process.Start();
+                process.WaitForExit();
+            }
+        }
+
+
+        private void picDisableWindowDefender_MouseHover(object sender, EventArgs e)
+        {
+            bunifuLabel1.Visible = true;
+            bunifuLabel1.Text = "Disable Window Defender AutoStart up After Reboot.";
+            // Move lblPicInfo to the right by 20 pixels
+            bunifuLabel1.Location = new Point(picEnableWindowDefender.Location.X - 12, picEnableWindowDefender.Location.Y - 35);
+        }
+
+        private void picDisableWindowDefender_MouseLeave(object sender, EventArgs e)
+        {
+            bunifuLabel1.Visible = false;
+        }
+
+        private void picEnableWindowDefender_MouseHover(object sender, EventArgs e)
+        {
+            bunifuLabel1.Visible = true;
+            bunifuLabel1.Text = "Enable Window Defender";
+            // Move lblPicInfo to the right by 20 pixels
+            bunifuLabel1.Location = new Point(picEnableWindowDefender.Location.X - 12, picEnableWindowDefender.Location.Y - 35);
+        }
+
+        private void picEnableWindowDefender_MouseLeave(object sender, EventArgs e)
+        {
+            bunifuLabel1.Visible = false;
         }
     }
 }

@@ -35,8 +35,8 @@ namespace Floating_Controller
             this.picClose = new Bunifu.UI.WinForms.BunifuPictureBox();
             this.picExpandClose = new Bunifu.UI.WinForms.BunifuPictureBox();
             this.bunifuGradientPanel1 = new Bunifu.UI.WinForms.BunifuGradientPanel();
-            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.picAbout = new Bunifu.UI.WinForms.BunifuPictureBox();
+            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.picExpand)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picExpandClose)).BeginInit();
@@ -108,21 +108,16 @@ namespace Floating_Controller
             this.bunifuGradientPanel1.Controls.Add(this.picExpandClose);
             this.bunifuGradientPanel1.Controls.Add(this.picClose);
             this.bunifuGradientPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.Gray;
-            this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.Crimson;
-            this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.DarkSlateGray;
-            this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.DarkKhaki;
+            this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(183)))), ((int)(((byte)(137)))));
+            this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.IndianRed;
+            this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(183)))), ((int)(((byte)(158)))));
+            this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.SteelBlue;
             this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, 0);
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(138, 50);
             this.bunifuGradientPanel1.TabIndex = 3;
             this.bunifuGradientPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bunifuGradientPanel1_MouseDown);
-            // 
-            // bunifuElipse1
-            // 
-            this.bunifuElipse1.ElipseRadius = 10;
-            this.bunifuElipse1.TargetControl = this;
             // 
             // picAbout
             // 
@@ -141,6 +136,11 @@ namespace Floating_Controller
             this.picAbout.TabStop = false;
             this.picAbout.Type = Bunifu.UI.WinForms.BunifuPictureBox.Types.Circle;
             this.picAbout.Click += new System.EventHandler(this.picAbout_Click);
+            // 
+            // bunifuElipse1
+            // 
+            this.bunifuElipse1.ElipseRadius = 10;
+            this.bunifuElipse1.TargetControl = this;
             // 
             // frmFloat
             // 

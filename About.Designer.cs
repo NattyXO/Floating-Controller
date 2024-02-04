@@ -29,6 +29,7 @@ namespace Floating_Controller
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(About));
             this.bunifuGradientPanel1 = new Bunifu.UI.WinForms.BunifuGradientPanel();
             this.picAbout = new Bunifu.UI.WinForms.BunifuPictureBox();
@@ -37,6 +38,7 @@ namespace Floating_Controller
             this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel4 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAbout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCloseAbout)).BeginInit();
@@ -73,6 +75,7 @@ namespace Floating_Controller
             this.picAbout.AutoSizeHeight = true;
             this.picAbout.BackColor = System.Drawing.Color.Transparent;
             this.picAbout.BorderRadius = 17;
+            this.picAbout.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picAbout.Image = ((System.Drawing.Image)(resources.GetObject("picAbout.Image")));
             this.picAbout.IsCircle = true;
             this.picAbout.Location = new System.Drawing.Point(173, 104);
@@ -91,6 +94,7 @@ namespace Floating_Controller
             this.picCloseAbout.AutoSizeHeight = true;
             this.picCloseAbout.BackColor = System.Drawing.Color.Transparent;
             this.picCloseAbout.BorderRadius = 11;
+            this.picCloseAbout.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picCloseAbout.Image = ((System.Drawing.Image)(resources.GetObject("picCloseAbout.Image")));
             this.picCloseAbout.IsCircle = true;
             this.picCloseAbout.Location = new System.Drawing.Point(185, 3);
@@ -166,6 +170,11 @@ namespace Floating_Controller
             this.bunifuLabel4.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel4.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
+            // bunifuElipse1
+            // 
+            this.bunifuElipse1.ElipseRadius = 10;
+            this.bunifuElipse1.TargetControl = this;
+            // 
             // About
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,5 +208,6 @@ namespace Floating_Controller
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel4;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel3;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel2;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
     }
 }

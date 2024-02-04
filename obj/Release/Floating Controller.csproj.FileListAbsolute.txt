@@ -78,3 +78,4 @@ C:\Users\NattyXO\source\repos\Floating Controller\obj\Release\Floating Controlle
 C:\Users\NattyXO\source\repos\Floating Controller\obj\Release\Floating Controller.csproj.CopyComplete
 C:\Users\NattyXO\source\repos\Floating Controller\obj\Release\Floating Controller.exe
 C:\Users\NattyXO\source\repos\Floating Controller\obj\Release\Floating Controller.pdb
+C:\Users\NattyXO\source\repos\Floating Controller\obj\Release\Floating_Controller.About.resources

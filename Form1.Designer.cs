@@ -36,10 +36,12 @@ namespace Floating_Controller
             this.picExpandClose = new Bunifu.UI.WinForms.BunifuPictureBox();
             this.bunifuGradientPanel1 = new Bunifu.UI.WinForms.BunifuGradientPanel();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.picAbout = new Bunifu.UI.WinForms.BunifuPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picExpand)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picExpandClose)).BeginInit();
             this.bunifuGradientPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAbout)).BeginInit();
             this.SuspendLayout();
             // 
             // picExpand
@@ -101,6 +103,7 @@ namespace Floating_Controller
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuGradientPanel1.BorderRadius = 1;
+            this.bunifuGradientPanel1.Controls.Add(this.picAbout);
             this.bunifuGradientPanel1.Controls.Add(this.picExpand);
             this.bunifuGradientPanel1.Controls.Add(this.picExpandClose);
             this.bunifuGradientPanel1.Controls.Add(this.picClose);
@@ -120,6 +123,24 @@ namespace Floating_Controller
             // 
             this.bunifuElipse1.ElipseRadius = 10;
             this.bunifuElipse1.TargetControl = this;
+            // 
+            // picAbout
+            // 
+            this.picAbout.AllowFocused = false;
+            this.picAbout.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.picAbout.AutoSizeHeight = true;
+            this.picAbout.BackColor = System.Drawing.Color.Transparent;
+            this.picAbout.BorderRadius = 17;
+            this.picAbout.Image = ((System.Drawing.Image)(resources.GetObject("picAbout.Image")));
+            this.picAbout.IsCircle = true;
+            this.picAbout.Location = new System.Drawing.Point(92, 8);
+            this.picAbout.Name = "picAbout";
+            this.picAbout.Size = new System.Drawing.Size(34, 34);
+            this.picAbout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picAbout.TabIndex = 3;
+            this.picAbout.TabStop = false;
+            this.picAbout.Type = Bunifu.UI.WinForms.BunifuPictureBox.Types.Circle;
+            this.picAbout.Click += new System.EventHandler(this.picAbout_Click);
             // 
             // frmFloat
             // 
@@ -141,6 +162,7 @@ namespace Floating_Controller
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picExpandClose)).EndInit();
             this.bunifuGradientPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picAbout)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -151,6 +173,7 @@ namespace Floating_Controller
         private Bunifu.UI.WinForms.BunifuPictureBox picExpandClose;
         private Bunifu.UI.WinForms.BunifuGradientPanel bunifuGradientPanel1;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
+        private Bunifu.UI.WinForms.BunifuPictureBox picAbout;
     }
 }
 

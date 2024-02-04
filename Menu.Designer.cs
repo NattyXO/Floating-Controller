@@ -31,9 +31,11 @@ namespace Floating_Controller
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
+            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.bunifuGradientPanel1 = new Bunifu.UI.WinForms.BunifuGradientPanel();
-            this.picEnableWindowDefender = new System.Windows.Forms.PictureBox();
             this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.picEnableWindowDefender = new System.Windows.Forms.PictureBox();
             this.picEnableUserAccountControl = new System.Windows.Forms.PictureBox();
             this.lblPicInfo = new Bunifu.UI.WinForms.BunifuLabel();
             this.picMaxFPSDisable = new System.Windows.Forms.PictureBox();
@@ -56,8 +58,6 @@ namespace Floating_Controller
             this.picRotateReset = new System.Windows.Forms.PictureBox();
             this.picRotate = new System.Windows.Forms.PictureBox();
             this.picScreenShot = new System.Windows.Forms.PictureBox();
-            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.bunifuGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picEnableWindowDefender)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEnableUserAccountControl)).BeginInit();
@@ -82,6 +82,11 @@ namespace Floating_Controller
             ((System.ComponentModel.ISupportInitialize)(this.picRotate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picScreenShot)).BeginInit();
             this.SuspendLayout();
+            // 
+            // bunifuElipse1
+            // 
+            this.bunifuElipse1.ElipseRadius = 20;
+            this.bunifuElipse1.TargetControl = this;
             // 
             // bunifuGradientPanel1
             // 
@@ -123,20 +128,8 @@ namespace Floating_Controller
             this.bunifuGradientPanel1.Quality = 10;
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(126, 343);
             this.bunifuGradientPanel1.TabIndex = 0;
+            this.bunifuGradientPanel1.Click += new System.EventHandler(this.bunifuGradientPanel1_Click);
             this.bunifuGradientPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bunifuGradientPanel1_MouseDown);
-            // 
-            // picEnableWindowDefender
-            // 
-            this.picEnableWindowDefender.Image = ((System.Drawing.Image)(resources.GetObject("picEnableWindowDefender.Image")));
-            this.picEnableWindowDefender.Location = new System.Drawing.Point(18, 201);
-            this.picEnableWindowDefender.Name = "picEnableWindowDefender";
-            this.picEnableWindowDefender.Size = new System.Drawing.Size(40, 40);
-            this.picEnableWindowDefender.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picEnableWindowDefender.TabIndex = 24;
-            this.picEnableWindowDefender.TabStop = false;
-            this.picEnableWindowDefender.Click += new System.EventHandler(this.picEnableWindowDefender_Click);
-            this.picEnableWindowDefender.MouseLeave += new System.EventHandler(this.picEnableWindowDefender_MouseLeave);
-            this.picEnableWindowDefender.MouseHover += new System.EventHandler(this.picEnableWindowDefender_MouseHover);
             // 
             // bunifuLabel1
             // 
@@ -154,6 +147,19 @@ namespace Floating_Controller
             this.bunifuLabel1.Text = "bunifuLabel1";
             this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // picEnableWindowDefender
+            // 
+            this.picEnableWindowDefender.Image = ((System.Drawing.Image)(resources.GetObject("picEnableWindowDefender.Image")));
+            this.picEnableWindowDefender.Location = new System.Drawing.Point(18, 201);
+            this.picEnableWindowDefender.Name = "picEnableWindowDefender";
+            this.picEnableWindowDefender.Size = new System.Drawing.Size(40, 40);
+            this.picEnableWindowDefender.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picEnableWindowDefender.TabIndex = 24;
+            this.picEnableWindowDefender.TabStop = false;
+            this.picEnableWindowDefender.Click += new System.EventHandler(this.picEnableWindowDefender_Click);
+            this.picEnableWindowDefender.MouseLeave += new System.EventHandler(this.picEnableWindowDefender_MouseLeave);
+            this.picEnableWindowDefender.MouseHover += new System.EventHandler(this.picEnableWindowDefender_MouseHover);
             // 
             // picEnableUserAccountControl
             // 
@@ -442,11 +448,6 @@ namespace Floating_Controller
             this.picScreenShot.Click += new System.EventHandler(this.picScreenShot_Click);
             this.picScreenShot.MouseLeave += new System.EventHandler(this.picScreenShot_MouseLeave);
             this.picScreenShot.MouseHover += new System.EventHandler(this.picScreenShot_MouseHover);
-            // 
-            // bunifuElipse1
-            // 
-            this.bunifuElipse1.ElipseRadius = 20;
-            this.bunifuElipse1.TargetControl = this;
             // 
             // Menu
             // 

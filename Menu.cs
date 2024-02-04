@@ -1441,5 +1441,10 @@ namespace Floating_Controller
         {
             bunifuLabel1.Visible = false;
         }
+
+        private void bunifuGradientPanel1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

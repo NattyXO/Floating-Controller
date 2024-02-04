@@ -11,6 +11,7 @@ namespace Floating_Controller
         {
             InitializeComponent();
             picExpandClose.Visible = false;
+            picAbout.Visible = false;
 
             // Set the location of the Menu form to the left and vertically centered of frmFloat
             menuForm.StartPosition = FormStartPosition.Manual;
@@ -20,6 +21,7 @@ namespace Floating_Controller
 
         }
         Menu menuForm = new Menu();
+        About aboutForm = new About();
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
 
@@ -33,16 +35,22 @@ namespace Floating_Controller
         {
             picExpand.Visible = true;
             picExpandClose.Visible = false;
+            picAbout.Visible = false;
             // Check if the menuForm is not null and is not disposed before trying to close it
             if (menuForm != null && !menuForm.IsDisposed)
             {
                 menuForm.Hide();
+            }
+            if (aboutForm != null && !aboutForm.IsDisposed)
+            {
+                aboutForm.Hide();
             }
         }
 
         public void picExpand_Click(object sender, EventArgs e)
         {
             picExpand.Visible = false;
+            picAbout.Visible = true;
             picExpandClose.Visible = true;
             // Check if the menuForm is not null and is not disposed before trying to show it
             if (menuForm != null && !menuForm.IsDisposed)
@@ -66,6 +74,18 @@ namespace Floating_Controller
             {
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
+        private void picAbout_Click(object sender, EventArgs e)
+        {
+            if (aboutForm != null && !aboutForm.IsDisposed)
+            {
+                // Set the location of the Menu form to the left and vertically centered of frmFloat
+                int leftPosition = this.Right;
+                int topPosition = this.Top + (this.Height - aboutForm.Height) / 2;
+                aboutForm.Location = new Point(leftPosition, topPosition);
+                aboutForm.Show();
             }
         }
     }

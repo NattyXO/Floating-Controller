@@ -14,11 +14,10 @@ namespace Floating_Controller
             picAbout.Visible = false;
 
             // Set the location of the Menu form to the left and vertically centered of frmFloat
-            menuForm.StartPosition = FormStartPosition.Manual;
-            int leftPosition = this.Left - menuForm.Width;
+            int leftPosition = this.Left - menuForm.Width-10;
             int topPosition = this.Top + (this.Height - menuForm.Height) / 2;
             menuForm.Location = new Point(leftPosition, topPosition);
-
+            menuForm.Show();
         }
         Menu menuForm = new Menu();
         About aboutForm = new About();

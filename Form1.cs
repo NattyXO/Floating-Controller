@@ -29,7 +29,6 @@ namespace Floating_Controller
         [DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
 
-
         public void picExpandClose_Click(object sender, EventArgs e)
         {
             picExpand.Visible = true;
@@ -61,7 +60,6 @@ namespace Floating_Controller
                 menuForm.Show();
             }
         }
-
         private void picClose_Click(object sender, EventArgs e)
         {
             Environment.Exit(1);
@@ -86,6 +84,11 @@ namespace Floating_Controller
                 aboutForm.Location = new Point(leftPosition, topPosition);
                 aboutForm.Show();
             }
+        }
+
+        private void bunifuGradientPanel1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

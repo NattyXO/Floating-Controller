@@ -32,7 +32,6 @@ namespace Floating_Controller
 
             }
         }
-
         private void TaostNotification_Load(object sender, EventArgs e)
         {
             AdjustWidthAndPosition();

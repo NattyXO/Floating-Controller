@@ -145,13 +145,6 @@ namespace Floating_Controller
             // Optionally, you can display a message to the user or open the folder containing the screenshot
             ToastHelper.ToastShow("SUCCESS", "Save Successful.");
         }
-
-        private void Menu_KeyDown(object sender, KeyEventArgs e)
-        {
-
-
-        }
-
         private void bunifuGradientPanel1_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -378,7 +371,6 @@ namespace Floating_Controller
             long x;
             long y;
         }
-
         internal enum DISP_CHANGE : int
         {
             Successful = 0,
@@ -469,164 +461,6 @@ namespace Floating_Controller
         {
             ResetAllRotations();
             ToastHelper.ToastShow("INFO", "Reset Rotate to default.");
-
-        }
-
-        public void SetPowerMode(string[] args)
-        {
-            try
-            {
-                ReadConfig();
-
-                if (args.Length == 0)
-                {
-                    uint result = PowerGetEffectiveOverlayScheme(out Guid currentMode);
-                    if (result == 0)
-                    {
-                        Console.WriteLine(currentMode);
-                        if (currentMode == PowerMode.BetterBattery)
-                        {
-                            Console.WriteLine("Better battery");
-                        }
-                        else if (currentMode == PowerMode.BetterPerformance)
-                        {
-                            Console.WriteLine("Better performance");
-                        }
-                        else if (currentMode == PowerMode.BestPerformance)
-                        {
-                            Console.WriteLine("Best performance");
-                        }
-                    }
-                    else
-                    {
-                        // Handle the result or throw an exception if needed.
-                        Console.Error.WriteLine($"Failed to get power mode. Result: {result}\n");
-                        return;
-                    }
-                }
-                else if (args.Length == 1)
-                {
-                    string parameter = args[0].ToLower();
-                    Guid powerMode;
-
-                    if (parameter == "/?" || parameter == "-?")
-                    {
-                        Usage();
-                        // Implement exit code or actions here.
-                        return;
-                    }
-                    else if (parameter == "BetterBattery".ToLower())
-                    {
-                        powerMode = PowerMode.BetterBattery;
-                    }
-                    else if (parameter == "BetterPerformance".ToLower())
-                    {
-                        powerMode = PowerMode.BetterPerformance;
-                    }
-                    else if (parameter == "BestPerformance".ToLower())
-                    {
-                        powerMode = PowerMode.BestPerformance;
-                    }
-                    else
-                    {
-                        try
-                        {
-                            powerMode = new Guid(parameter);
-                        }
-                        catch (Exception)
-                        {
-                            Console.Error.WriteLine("Failed to parse GUID.\n");
-                            Usage();
-                            // Implement exit code or actions here.
-                            return;
-                        }
-                    }
-                    uint result = PowerSetActiveOverlayScheme(powerMode);
-
-                    if (result == 0)
-                    {
-                        Console.WriteLine("Set power mode to {0}.", powerMode);
-                    }
-                    else
-                    {
-                        Console.Error.WriteLine("Failed to set power mode.\n");
-                        Usage();
-                        // Implement exit code or actions here.
-                        return;
-                    }
-                }
-                else
-                {
-                    Usage();
-                    // Implement exit code or actions here.
-                    return;
-                }
-            }
-            catch (Exception exception)
-            {
-                Console.Error.WriteLine("{0}: {1}\n{2}", exception.GetType(), exception.Message, exception.StackTrace);
-                Console.WriteLine();
-                Usage();
-                // Implement exit code or actions here.
-                return;
-            }
-
-            // Implement exit code or actions here for successful execution.
-            Console.WriteLine("Power mode setting completed successfully.");
-        }
-
-
-        private static void Usage()
-        {
-            Console.WriteLine(
-                "PowerMode (GPLv3); used to set the active power mode on Windows 10, version 1709 or later\n" +
-                "https://github.com/AaronKelley/PowerMode\n" +
-                "\n" +
-                "  PowerMode                    Report the current power mode\n" +
-                "  PowerMode BetterBattery      Set the system to \"better battery\" mode\n" +
-                "  PowerMode BetterPerformance  Set the system to \"better performance\" mode\n" +
-                "  PowerMode BestPerformance    Set the system to \"best performance\" mode\n" +
-                "  PowerMode <GUID>             Set the system to the mode identified by the GUID"
-            );
-        }
-
-        private static void ReadConfig()
-        {
-            if (ConfigurationManager.AppSettings["BetterBatteryGuid"] != null)
-            {
-                PowerMode.BetterBattery = new Guid(ConfigurationManager.AppSettings["BetterBatteryGuid"]);
-            }
-            if (ConfigurationManager.AppSettings["BetterPerformanceGuid"] != null)
-            {
-                PowerMode.BetterPerformance = new Guid(ConfigurationManager.AppSettings["BetterPerformanceGuid"]);
-            }
-            if (ConfigurationManager.AppSettings["BestPerformanceGuid"] != null)
-            {
-                PowerMode.BestPerformance = new Guid(ConfigurationManager.AppSettings["BestPerformanceGuid"]);
-            }
-        }
-
-        private static class PowerMode
-        {
-            public static Guid BetterBattery = new Guid("961cc777-2547-4f9d-8174-7d86181b8a7a");
-            public static Guid BetterPerformance = new Guid("3af9B8d9-7c97-431d-ad78-34a8bfea439f");
-            public static Guid BestPerformance = new Guid("ded574b5-45a0-4f42-8737-46345c09c238");
-        }
-
-        [DllImportAttribute("powrprof.dll", EntryPoint = "PowerGetEffectiveOverlayScheme")]
-        private static extern uint PowerGetEffectiveOverlayScheme(out Guid EffectiveOverlayPolicyGuid);
-
-        [DllImportAttribute("powrprof.dll", EntryPoint = "PowerSetActiveOverlayScheme")]
-        private static extern uint PowerSetActiveOverlayScheme(Guid OverlaySchemeGuid);
-
-        private void picEnergySaver_Click(object sender, EventArgs e)
-        {
-            PowerSetActiveOverlayScheme(PowerMode.BetterBattery);
-
-
-            // Inform the user about the mode change.
-            ToastHelper.ToastShow("SUCCESS", "Power mode set to Better Battery.");
-
         }
 
         private void picAlwaysOn_Click(object sender, EventArgs e)
@@ -783,9 +617,6 @@ namespace Floating_Controller
 
             // Release the Windows key
             keybd_event((byte)VK_LWIN, 0, KEYEVENTF_KEYUP, IntPtr.Zero);
-
-            //ToastShow("SUCCESS", "Emoji Keyboard Activated.");
-
         }
         private const uint SPI_SETSTICKYKEYS = 0x003B;
         private const uint SPIF_SENDCHANGE = 0x02;
@@ -823,9 +654,7 @@ namespace Floating_Controller
                 picDisableStickyKeysEnable.Visible = false;
                 ToastHelper.ToastShow("INFO", "Go to Setting and enable it.");
             }
-
         }
-
         public static bool DisableStickyKeys()
         {
             STICKYKEYS sk = new STICKYKEYS();
@@ -868,13 +697,6 @@ namespace Floating_Controller
             keybd_event((byte)VK_LWIN, 0, KEYEVENTF_KEYUP, IntPtr.Zero);
         }
 
-
-        private void picRefreshRateMax_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
         class Program1
         {
             private const string UacRegistryKey = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System";
@@ -909,7 +731,6 @@ namespace Floating_Controller
 
                 }
             }
-
             public static void EnableUAC()
             {
                 try
@@ -939,7 +760,6 @@ namespace Floating_Controller
             picEnableUserAccountControl.Visible = false;
             picDisableUserAccountControl.Visible = true;
         }
-
         private void picGodModeFolder_Click(object sender, EventArgs e)
         {
             try
@@ -971,12 +791,10 @@ namespace Floating_Controller
                 ToastHelper.ToastShow("ERROR", $"Error enabling User Account Control: {ex.Message}");
             }
         }
-
         private void picScreenShot_MouseHover(object sender, EventArgs e)
         {
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Full ScreenShot";
-            // Move lblPicInfo to the right by 20 pixels
             lblPicInfo.Location = new Point(picScreenShot.Location.X + 30, picScreenShot.Location.Y);
         }
 
@@ -989,7 +807,6 @@ namespace Floating_Controller
         {
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Rotate 270 Degree";
-            // Move lblPicInfo to the right by 20 pixels
             lblPicInfo.Location = new Point(picRotate270.Location.X + 20, picRotate270.Location.Y - 20);
         }
 
@@ -1002,7 +819,6 @@ namespace Floating_Controller
         {
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Rotate 180 Degree";
-            // Move lblPicInfo to the right by 20 pixels
             lblPicInfo.Location = new Point(picRotate180.Location.X + 20, picRotate180.Location.Y - 20);
         }
 
@@ -1015,7 +831,6 @@ namespace Floating_Controller
         {
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Rotate 90 Degree";
-            // Move lblPicInfo to the right by 20 pixels
             lblPicInfo.Location = new Point(picRotate90.Location.X + 20, picRotate90.Location.Y - 20);
         }
 
@@ -1028,7 +843,6 @@ namespace Floating_Controller
         {
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Default";
-            // Move lblPicInfo to the right by 20 pixels
             lblPicInfo.Location = new Point(picRotate.Location.X + 20, picRotate.Location.Y - 20);
         }
 
@@ -1041,7 +855,6 @@ namespace Floating_Controller
         {
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Reset Rotate";
-            // Move lblPicInfo to the right by 20 pixels
             lblPicInfo.Location = new Point(picRotateReset.Location.X + 20, picRotateReset.Location.Y - 20);
         }
 
@@ -1054,7 +867,6 @@ namespace Floating_Controller
         {
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Default";
-            // Move lblPicInfo to the right by 20 pixels
             lblPicInfo.Location = new Point(picAlwaysOnOFF.Location.X + 20, picAlwaysOnOFF.Location.Y - 20);
         }
 
@@ -1067,7 +879,6 @@ namespace Floating_Controller
         {
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Always On Screen";
-            // Move lblPicInfo to the right by 20 pixels
             lblPicInfo.Location = new Point(picAlwaysOn.Location.X + 20, picAlwaysOn.Location.Y - 20);
         }
 
@@ -1080,7 +891,6 @@ namespace Floating_Controller
         {
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Keyboard On Screen";
-            // Move lblPicInfo to the right by 20 pixels
             lblPicInfo.Location = new Point(picKeyboardOnScreen.Location.X + 5, picKeyboardOnScreen.Location.Y - 20);
         }
 
@@ -1093,7 +903,6 @@ namespace Floating_Controller
         {
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "God Mode Folder";
-            // Move lblPicInfo to the right by 20 pixels
             lblPicInfo.Location = new Point(picGodModeFolder.Location.X - 50, picGodModeFolder.Location.Y + 40);
         }
 
@@ -1106,7 +915,6 @@ namespace Floating_Controller
         {
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Show Emoji Keyboard";
-            // Move lblPicInfo to the right by 20 pixels
             lblPicInfo.Location = new Point(picEmojiKeyboard.Location.X - 70, picEmojiKeyboard.Location.Y - 20);
         }
 
@@ -1119,7 +927,6 @@ namespace Floating_Controller
         {
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Disable Sticky Keys";
-            // Move lblPicInfo to the right by 20 pixels
             lblPicInfo.Location = new Point(picDisableStickyKeys.Location.X - 50, picDisableStickyKeys.Location.Y - 20);
         }
 
@@ -1132,7 +939,6 @@ namespace Floating_Controller
         {
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Show Clipboard History";
-            // Move lblPicInfo to the right by 20 pixels
             lblPicInfo.Location = new Point(picClipboardHistory.Location.X - 75, picClipboardHistory.Location.Y - 20);
         }
 
@@ -1147,9 +953,6 @@ namespace Floating_Controller
             SW_SHOWNORMAL = 1,
             SW_SHOWMAXIMIZED = 3
         }
-
-
-
         private void picMaxFPS_Click(object sender, EventArgs e)
         {
             // Replace the instance ID with the actual instance ID of the device you want to disable
@@ -1226,7 +1029,6 @@ namespace Floating_Controller
 
             // Start the process
             Process.Start(psi);
-            //ToastHelper.ToastShow("SUCCESS", "Command Finished.");
         }
 
         private void picMaxFPSDisable_Click(object sender, EventArgs e)
@@ -1245,7 +1047,6 @@ namespace Floating_Controller
         {
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Enable Maximum FPS";
-            // Move lblPicInfo to the right by 20 pixels
             lblPicInfo.Location = new Point(picMaxFPS.Location.X - 75, picMaxFPS.Location.Y - 20);
         }
 
@@ -1258,7 +1059,6 @@ namespace Floating_Controller
         {
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Disable Maximum FPS";
-            // Move lblPicInfo to the right by 20 pixels
             lblPicInfo.Location = new Point(picMaxFPSDisable.Location.X - 12, picMaxFPSDisable.Location.Y - 35);
         }
 
@@ -1271,7 +1071,6 @@ namespace Floating_Controller
         {
             bunifuLabel1.Visible = true;
             bunifuLabel1.Text = "Remove Activate Window WaterMark";
-            // Move lblPicInfo to the right by 20 pixels
             bunifuLabel1.Location = new Point(picRemoveActivateWindowWaterMark.Location.X - 12, picRemoveActivateWindowWaterMark.Location.Y - 35);
         }
 
@@ -1285,7 +1084,6 @@ namespace Floating_Controller
 
             bunifuLabel1.Visible = true;
             bunifuLabel1.Text = "Disable User Account Control";
-            // Move lblPicInfo to the right by 20 pixels
             lblPicInfo.Location = new Point(picDisableUserAccountControl.Location.X - 35, picDisableUserAccountControl.Location.Y - 20);
 
         }
@@ -1300,17 +1098,12 @@ namespace Floating_Controller
         {
             bunifuLabel1.Visible = true;
             bunifuLabel1.Text = "Enable User Account Control";
-            // Move lblPicInfo to the right by 20 pixels
-            //lblPicInfo.Location = new Point(picEnableUserAccountControl.Location.X - 75, picEnableUserAccountControl.Location.Y - 20);
 
         }
-
         private void picEnableUserAccountControl_MouseLeave(object sender, EventArgs e)
         {
             bunifuLabel1.Visible = false;
         }
-
-
         private void MoveTaskbarPosition()
         {
             const string registryPath = @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3";
@@ -1331,7 +1124,6 @@ namespace Floating_Controller
                 RestartExplorerProcess();
             }
         }
-
         private void RestartExplorerProcess()
         {
             // Kill the Explorer process
@@ -1354,7 +1146,6 @@ namespace Floating_Controller
         {
             lblPicInfo.Visible = true;
             lblPicInfo.Text = "Change Taskbar Position";
-            // Move lblPicInfo to the right by 20 pixels
             lblPicInfo.Location = new Point(picChangeTaskBarPosition.Location.X - 75, picChangeTaskBarPosition.Location.Y - 20);
         }
 
@@ -1414,13 +1205,10 @@ namespace Floating_Controller
                 process.WaitForExit();
             }
         }
-
-
         private void picDisableWindowDefender_MouseHover(object sender, EventArgs e)
         {
             bunifuLabel1.Visible = true;
             bunifuLabel1.Text = "Disable Window Defender AutoStart up After Reboot.";
-            // Move lblPicInfo to the right by 20 pixels
             bunifuLabel1.Location = new Point(picEnableWindowDefender.Location.X - 12, picEnableWindowDefender.Location.Y - 35);
         }
 
@@ -1433,7 +1221,6 @@ namespace Floating_Controller
         {
             bunifuLabel1.Visible = true;
             bunifuLabel1.Text = "Enable Window Defender";
-            // Move lblPicInfo to the right by 20 pixels
             bunifuLabel1.Location = new Point(picEnableWindowDefender.Location.X - 12, picEnableWindowDefender.Location.Y - 35);
         }
 

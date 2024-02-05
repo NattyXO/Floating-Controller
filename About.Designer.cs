@@ -112,7 +112,7 @@ namespace Floating_Controller
             this.bunifuLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel2.Size = new System.Drawing.Size(57, 15);
             this.bunifuLabel2.TabIndex = 7;
-            this.bunifuLabel2.Text = "Version 1.0";
+            this.bunifuLabel2.Text = "Version 1.1";
             this.bunifuLabel2.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 

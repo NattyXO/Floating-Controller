@@ -20,10 +20,9 @@ namespace Floating_Controller
         [DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
 
-
         private void picCloseAbout_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
         }
 
         private void bunifuGradientPanel1_MouseDown(object sender, MouseEventArgs e)
